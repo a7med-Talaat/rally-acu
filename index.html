@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rally ACU | Turning Ideas into Opportunities</title>
+  <meta name="description" content="Rally ACU is a premier student-led society at Ahram Canadian University empowering future leaders, entrepreneurs, and innovators. Driven by speed, defined by impact.">
+  <meta name="keywords" content="Rally ACU, Ahram Canadian University, Entrepreneurship, Leadership, Student Activities, Egypt, Innovation">
+  <meta name="author" content="Rally ACU">
+  <meta property="og:title" content="Rally ACU | Ahram Canadian University">
+  <meta property="og:description" content="Turning Ideas into Opportunities. Join Rally ACU to develop real-world business ideas.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="assets/img/logos/rally-main-logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Particles Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Glow Orbs -->
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="main-header" id="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-container" aria-label="Rally ACU Home">
+        <img src="assets/img/logos/rally-main-logo.png" alt="Rally ACU Logo">
+        <span class="brand-text">RALLY ACU</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#about" class="nav-link active">About Us</a></li>
+          <li><a href="seasons.html" class="nav-link">Seasons</a></li>
+          <li><a href="team.html" class="nav-link">Our Team</a></li>
+          <li><a href="#register" class="nav-link">Join Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══ HERO ═══════════════════════════════════ -->
+    <section class="hero-section" id="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content">
+
+        <!-- Animated Live Badge -->
+        <div class="hero-badge" aria-label="Recruiting for Season 2026-2027">
+          <span class="hero-badge-dot"></span>
+          <span class="hero-badge-pill">Season 26/27</span>
+          <span class="hero-badge-text">Recruitment Open</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-title-line1">Turning Ideas Into</span>
+          <span class="hero-title-line2">Opportunities</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Rally Ahram Canadian University is a premier student-led community dedicated to empowering and developing future leaders, innovators, and entrepreneurs — regardless of academic background.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#register" class="btn-primary" id="hero-cta-join">
+            Join Season 2026–2027
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="seasons.html" class="btn-outline" id="hero-cta-explore">Explore Seasons</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-cue" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ════════════════════════════════════ -->
+    <section class="section-padding" id="about">
+      <div class="container">
+        <div class="overview-grid">
+
+          <!-- Visual -->
+          <div class="overview-visual">
+            <div class="overview-visual-inner">
+              <div class="visual-glow-bg"></div>
+              <div class="visual-ring"></div>
+              <div class="visual-ring-2"></div>
+              <img src="assets/img/logos/rally-main-logo.png" alt="Rally ACU Logo Visual">
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="overview-text">
+            <span class="section-tag">Our Story</span>
+            <h2 class="section-title reveal">Who We Are</h2>
+            <p class="reveal reveal-delay-1">
+              Rally Ahram Canadian University is a student organization committed to developing future leaders, entrepreneurs, and innovators by creating opportunities that extend beyond the classroom. Through entrepreneurship events, competitions, workshops, networking sessions, sports activities, and community initiatives, we provide students with practical experiences that enhance both their personal and professional growth.
+            </p>
+            <p class="reveal reveal-delay-2">
+              Our goal is to build a dynamic community where students can develop essential skills, connect with industry professionals, exchange ideas, and transform their potential into meaningful impact. By fostering collaboration, creativity, and continuous learning, Rally empowers students to become active contributors to their communities.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-item reveal reveal-delay-2">
+                <div class="feature-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="feature-text">
+                  <h4>Empowering Students</h4>
+                  <p>Providing space, skills, and tools to think big.</p>
+                </div>
+              </div>
+              <div class="feature-item reveal reveal-delay-3">
+                <div class="feature-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="feature-text">
+                  <h4>Building Leaders</h4>
+                  <p>Nurturing active members through operational ownership.</p>
+                </div>
+              </div>
+              <div class="feature-item reveal reveal-delay-4">
+                <div class="feature-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </div>
+                <div class="feature-text">
+                  <h4>Creating Impact</h4>
+                  <p>Translating concepts into opportunities and real change.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STATS ════════════════════════════════════ -->
+    <section class="section-padding" id="impact" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Impact Metrics</span>
+          <h2 class="section-title reveal">Our Season in Numbers</h2>
+          <p class="section-desc reveal reveal-delay-1">During the 2025–2026 inaugural year, Rally ACU made a tremendous impact on the student body and ecosystem.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card-animated glass-card spotlight-card reveal reveal-delay-1">
+            <span class="stat-icon-emoji">📊</span>
+            <div class="stat-number" data-target="600">0</div>
+            <div class="stat-label">Students Reached</div>
+            <div class="stat-subtext">Via recruitment and offline awareness campaigns</div>
+          </div>
+          <div class="stat-card-animated glass-card spotlight-card reveal reveal-delay-2">
+            <span class="stat-icon-emoji">📚</span>
+            <div class="stat-number" data-target="12">0</div>
+            <div class="stat-label">Training Sessions</div>
+            <div class="stat-subtext">15 total training hours in entrepreneurship &amp; soft skills</div>
+          </div>
+          <div class="stat-card-animated glass-card spotlight-card reveal reveal-delay-3">
+            <span class="stat-icon-emoji">👥</span>
+            <div class="stat-number" data-target="700">0</div>
+            <div class="stat-label">Event Attendees</div>
+            <div class="stat-subtext">Active participation across our major events and tournaments</div>
+          </div>
+          <div class="stat-card-animated glass-card spotlight-card reveal reveal-delay-4">
+            <span class="stat-icon-emoji">🎤</span>
+            <div class="stat-number" data-target="14">0</div>
+            <div class="stat-label">Speakers &amp; Mentors</div>
+            <div class="stat-subtext">Prominent industry leaders sharing business model expertise</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ NETWORK ══════════════════════════════════ -->
+    <section class="section-padding" id="network">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Partnerships</span>
+          <h2 class="section-title reveal">Our Network &amp; Supporters</h2>
+          <p class="section-desc reveal reveal-delay-1">Strong collaborations that enable our society to host regional competitions, sports leagues, and entrepreneur bootcamps.</p>
+        </div>
+      </div>
+
+      <!-- Marquee (Static) -->
+      <div class="partners-strip static">
+        <div class="marquee-wrapper">
+          <div class="marquee-inner">
+            <div class="marquee-item"><span class="marquee-item-text">RED BULL</span></div>
+            <div class="marquee-item"><span class="marquee-item-text">KELLOGG'S</span></div>
+            <div class="marquee-item"><span class="marquee-item-text">CURVA</span></div>
+            <div class="marquee-item"><span class="marquee-item-text">CR7</span></div>
+            <div class="marquee-item"><span class="marquee-item-text">KUFTA</span></div>
+            <div class="marquee-item" style="display: inline-flex; align-items: center; gap: 10px;">
+              <img src="assets/img/logos/supporters logos/matrahna.png" alt="Matrahna Logo" style="height: 38px; width: auto; object-fit: contain; vertical-align: middle; filter: drop-shadow(0 2px 8px var(--red-glow));" onerror="this.style.display='none'">
+              <span class="marquee-item-text" style="opacity: 1;">MATRAHNA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="partner-cards-grid">
+          <div class="partner-card spotlight-card reveal reveal-delay-1">
+            <h4>Rally 6 October University</h4>
+            <p>Collaborated as a joint sports tournament and regional startup challenge partner, driving inter-university excellence and student engagement.</p>
+          </div>
+          <div class="partner-card spotlight-card reveal reveal-delay-2">
+            <h4>Rally 6 October Technological University</h4>
+            <p>Co-hosted key regional competitions and sports tournaments, empowering technological innovation and hands-on learning among youth.</p>
+          </div>
+          <div class="partner-card spotlight-card reveal reveal-delay-3">
+            <h4>Rally Badr University in Assiut</h4>
+            <p>Partnered in regional entrepreneurship championships, sending outstanding student delegations to compete and pitch at Ahram Canadian University.</p>
+          </div>
+          <div class="partner-card spotlight-card reveal reveal-delay-4" style="display: flex; gap: 20px; align-items: flex-start; flex-direction: column;">
+            <img src="assets/img/logos/supporters logos/matrahna.png" alt="Matrahna Logo" style="height: 48px; width: auto; object-fit: contain; border-radius: 6px; background: rgba(255,255,255,0.04); padding: 4px;" onerror="this.style.display='none'">
+            <div>
+              <h4>Matrahna</h4>
+              <p>A rising community in Ahram Canadian University collaborated with them to be partners. Matrahna helps support our student initiatives, events, and community engagements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ══════════════════════════════ -->
+    <section class="section-padding" id="faq" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Common Queries</span>
+          <h2 class="section-title reveal">Frequently Asked Questions</h2>
+          <p class="section-desc reveal reveal-delay-1">Got questions? We have answers to help you understand what Rally ACU is all about and how you can fit in.</p>
+        </div>
+
+        <div class="faq-accordion-container">
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-1">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-1">
+              <span>Who can join Rally ACU?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-ans-1" aria-hidden="false">
+              <p>Any student currently enrolled at Ahram Canadian University can join, regardless of their faculty, major, or year of study. We believe that innovation and leadership thrive best when minds from diverse academic backgrounds collaborate.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-2">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-2">
+              <span>Do I need prior business or startup experience?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-ans-2" aria-hidden="false">
+              <p>Not at all! One of the core missions of Rally ACU is to develop your skills. We provide full onboarding, training workshops, and peer mentorship across all specialized committees to help you learn marketing, business development, operations, and leadership from the ground up.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-3">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-3">
+              <span>What committees can I apply for?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-ans-3" aria-hidden="false">
+              <p>We have five active committees that you can join: Marketing (design, content, social media), Entrepreneurs (mentorship, workshops), Operations (event logistics, organization), Business Development (sponsorship, partnerships), and Talent Management (human resources, team tracking). You can select your preference in the form!</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-4">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-ans-4">
+              <span>How does the recruitment process work?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-ans-4" aria-hidden="false">
+              <p>The process is simple: click "Fill Registration Form" below, submit your details, and our Talent Management team will review your application. Shortlisted candidates will be invited for a friendly offline or online interview to finalize selection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ REGISTRATION CTA ═════════════════════════ -->
+    <section class="section-padding" id="register">
+      <div class="container">
+        <div class="cta-wrapper reveal">
+          <div class="cta-bg-glow" aria-hidden="true"></div>
+
+          <div class="cta-text">
+            <span class="cta-tag">Recruitment 2026–2027</span>
+            <h3 class="cta-title">Ready to join the movement?</h3>
+            <p class="cta-desc">
+              We're looking for passionate individuals to join our committees: Marketing, Entrepreneurs, Operations, Business Development, and Talent Management. Take the first step in turning your ideas into opportunities.
+            </p>
+            <div class="cta-checklist">
+              <div class="cta-check">
+                <div class="cta-check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75l6 6 9-13.5"></path></svg></div>
+                <span>No prior entrepreneurship background required</span>
+              </div>
+              <div class="cta-check">
+                <div class="cta-check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75l6 6 9-13.5"></path></svg></div>
+                <span>Develop core management and leadership skills</span>
+              </div>
+              <div class="cta-check">
+                <div class="cta-check-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75l6 6 9-13.5"></path></svg></div>
+                <span>Collaborate on large national university events</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <a href="https://forms.gle/3cfzVsgtwSCeg1kd9" target="_blank" rel="noopener noreferrer" class="btn-primary" id="cta-register-btn" style="font-size:1.05rem; padding:14px 30px; border-radius:30px;">
+              Fill Registration Form
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo-container" style="margin-bottom: 14px; display: inline-flex;">
+            <img src="assets/img/logos/rally-main-logo.png" alt="Rally Logo">
+            <span class="brand-text">RALLY ACU</span>
+          </a>
+          <p class="footer-brand-tagline">"driven by speed, defined by impact"</p>
+          <p class="footer-brand-desc">Building the next generation of entrepreneurial leaders at Ahram Canadian University. Guidance under Dr. Ragaa Magdy.</p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="seasons.html">Seasons</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="https://forms.gle/3cfzVsgtwSCeg1kd9" target="_blank">Join 26/27</a></li>
+          </ul>
+        </div>
+
+        <!-- Events -->
+        <div class="footer-col">
+          <h5>Events</h5>
+          <ul>
+            <li><a href="seasons.html">How to Start Your Startup</a></li>
+            <li><a href="seasons.html">Regional Competition</a></li>
+            <li><a href="seasons.html">Football League</a></li>
+            <li><a href="seasons.html">Ramadan Iftar</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+          <h5>Connect With Us</h5>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.6;">Stay updated with our latest news and upcoming workshops.</p>
+          <div class="social-row" style="margin-bottom: 1.5rem;">
+            <a href="https://www.facebook.com/share/1CrQotw6cx/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/rally.acu?igsh=MWR3c214c2cwdGNkNA==" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@rally.acu?_r=1&_t=ZS-97e6Ya2uEYp" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+            </a>
+          </div>
+          <div class="footer-logos">
+            <img src="assets/img/logos/acu-logo.png" alt="ACU">
+            <img src="assets/img/logos/rally-egypt-logo.png" alt="Rally Egypt">
+            <img src="assets/img/logos/aast-ec-logo.png" alt="AAST EC">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Rally ACU — Ahram Canadian University. All rights reserved.</span>
+        <span>Driven by speed, defined by impact ⚡</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button with circular progress -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg class="progress-circle" width="48" height="48" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" class="progress-circle-bg"></circle>
+      <circle cx="50" cy="50" r="40" class="progress-circle-fill" id="btt-progress-bar"></circle>
+    </svg>
+    <span class="arrow-up">↑</span>
+  </button>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

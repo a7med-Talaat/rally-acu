@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team | Rally ACU</title>
+  <meta name="description" content="Meet the active board members, committee heads, and outstanding members of Rally ACU for the 2025-2026 season.">
+  <meta name="keywords" content="Rally ACU, Team, Board, Marketing, Entrepreneurs, Operations, Business Development, Talent Management">
+  <meta name="author" content="Rally ACU">
+  <link rel="icon" type="image/png" href="assets/img/logos/rally-main-logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+  <header class="main-header" id="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-container" aria-label="Rally ACU Home">
+        <img src="assets/img/logos/rally-main-logo.png" alt="Rally ACU Logo">
+        <span class="brand-text">RALLY ACU</span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html#about" class="nav-link">About Us</a></li>
+          <li><a href="seasons.html" class="nav-link">Seasons</a></li>
+          <li><a href="team.html" class="nav-link active">Our Team</a></li>
+          <li><a href="index.html#register" class="nav-link">Join Us</a></li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        </button>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-tag" style="justify-content:center;">Rally Family</span>
+        <h1 class="page-hero-title">Meet the Innovators</h1>
+        <p class="page-hero-desc">Our team of 53 active members working across 5 specialized committees to build future leaders and turn ideas into opportunities.</p>
+      </div>
+    </section>
+
+    <!-- Search + Filters -->
+    <section class="container" style="padding: 3rem 1.5rem 0;">
+      <div class="search-container">
+        <span class="search-icon" style="top: 48%;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted); display: block;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </span>
+        <input type="text" id="member-search" class="member-search-input" placeholder="Search team members by name…" autocomplete="off">
+      </div>
+
+      <div class="filter-nav" role="tablist" aria-label="Filter team members">
+        <button class="filter-btn active" data-filter="all">All Members</button>
+        <button class="filter-btn" data-filter="board">Board &amp; Heads</button>
+        <button class="filter-btn" data-filter="marketing">Marketing</button>
+        <button class="filter-btn" data-filter="entrepreneurs">Entrepreneurs</button>
+        <button class="filter-btn" data-filter="operations">Operations</button>
+        <button class="filter-btn" data-filter="bd">Business Dev</button>
+        <button class="filter-btn" data-filter="talent">Talent Mgmt</button>
+      </div>
+    </section>
+
+    <!-- Team Directory -->
+    <section class="container" style="padding-bottom: 6rem;">
+
+      <!-- ── EXECUTIVE BOARD ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Executive Board &amp; Committee Heads</h2>
+        <div class="team-grid" id="team-container">
+
+          <div class="glass-card member-card board spotlight-card" data-name="malak hussein">
+            <div class="member-avatar">MH</div>
+            <div class="member-info">
+              <h4 class="member-name">Malak Hussein</h4>
+              <div class="member-role">President</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board entrepreneurs spotlight-card" data-name="mohamed khalid">
+            <div class="member-avatar">MK</div>
+            <div class="member-info">
+              <h4 class="member-name">Mohamed Khalid</h4>
+              <div class="member-role">Entrepreneurs Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board marketing spotlight-card" data-name="ahmed talaat">
+            <div class="member-avatar">AT</div>
+            <div class="member-info">
+              <h4 class="member-name">Ahmed Talaat</h4>
+              <div class="member-role">Marketing Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board spotlight-card" data-name="ismael kamer">
+            <div class="member-avatar">IK</div>
+            <div class="member-info">
+              <h4 class="member-name">Ismael Kamer</h4>
+              <div class="member-role">Vice President</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board talent spotlight-card" data-name="abdelrahman ahmed">
+            <div class="member-avatar">AA</div>
+            <div class="member-info">
+              <h4 class="member-name">Abdelrahman Ahmed</h4>
+              <div class="member-role">Talent Management Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board talent spotlight-card" data-name="mariam ahmed">
+            <div class="member-avatar">MA</div>
+            <div class="member-info">
+              <h4 class="member-name">Mariam Ahmed</h4>
+              <div class="member-role">Talent Management Vice Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board bd spotlight-card" data-name="habiba mohamed">
+            <div class="member-avatar">HM</div>
+            <div class="member-info">
+              <h4 class="member-name">Habiba Mohamed</h4>
+              <div class="member-role">Business Development Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board bd spotlight-card" data-name="malak torky">
+            <div class="member-avatar">MT</div>
+            <div class="member-info">
+              <h4 class="member-name">Malak Torky</h4>
+              <div class="member-role">Business Development Vice Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board entrepreneurs spotlight-card" data-name="alaa abdullah">
+            <div class="member-avatar">AA</div>
+            <div class="member-info">
+              <h4 class="member-name">Alaa Abdullah</h4>
+              <div class="member-role">Entrepreneurs Vice Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board operations spotlight-card" data-name="abdullah mohamed">
+            <div class="member-avatar">AM</div>
+            <div class="member-info">
+              <h4 class="member-name">Abdullah Mohamed</h4>
+              <div class="member-role">Operations Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+          <div class="glass-card member-card board operations spotlight-card" data-name="seif mohamed">
+            <div class="member-avatar">SM</div>
+            <div class="member-info">
+              <h4 class="member-name">Seif Mohamed</h4>
+              <div class="member-role">Operations Vice Head</div>
+              <div class="member-dept">Board &amp; Heads</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── MARKETING ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Marketing Committee</h2>
+        <div class="team-grid">
+
+          <div class="glass-card member-card marketing spotlight-card" data-name="basant kamal esmail">
+            <div class="member-avatar">BE</div>
+            <div class="member-info"><h4 class="member-name">Basant Kamal Esmail</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing spotlight-card" data-name="rana karem">
+            <div class="member-avatar">RK</div>
+            <div class="member-info"><h4 class="member-name">Rana Karem</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing best-member spotlight-card" data-name="nancy osama saad">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">NS</div>
+            <div class="member-info"><h4 class="member-name">Nancy Osama Saad</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing spotlight-card" data-name="rodaina mohamed">
+            <div class="member-avatar">RM</div>
+            <div class="member-info"><h4 class="member-name">Rodaina Mohamed</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing best-member spotlight-card" data-name="mariam ragab kotb">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">MK</div>
+            <div class="member-info"><h4 class="member-name">Mariam Ragab Kotb</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing best-member spotlight-card" data-name="roaa hatem">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">RH</div>
+            <div class="member-info"><h4 class="member-name">Roaa Hatem</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+          <div class="glass-card member-card marketing best-member spotlight-card" data-name="omar elnady">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">OE</div>
+            <div class="member-info"><h4 class="member-name">Omar Elnady</h4><div class="member-role">Marketing Member</div><div class="member-dept">Marketing</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── ENTREPRENEURS ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Entrepreneurs Committee</h2>
+        <div class="team-grid">
+
+          <div class="glass-card member-card entrepreneurs spotlight-card" data-name="rawda mohamed sobhy">
+            <div class="member-avatar">RS</div>
+            <div class="member-info"><h4 class="member-name">Rawda Mohamed Sobhy</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs spotlight-card" data-name="ganah mahmoud mostafa">
+            <div class="member-avatar">GM</div>
+            <div class="member-info"><h4 class="member-name">Ganah Mahmoud Mostafa</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs best-member spotlight-card" data-name="farah elhawary">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">FE</div>
+            <div class="member-info"><h4 class="member-name">Farah Elhawary</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs spotlight-card" data-name="youssef mohamed">
+            <div class="member-avatar">YM</div>
+            <div class="member-info"><h4 class="member-name">Youssef Mohamed</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs spotlight-card" data-name="dina moussa">
+            <div class="member-avatar">DM</div>
+            <div class="member-info"><h4 class="member-name">Dina Moussa</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs spotlight-card" data-name="nayera ahmed ali">
+            <div class="member-avatar">NA</div>
+            <div class="member-info"><h4 class="member-name">Nayera Ahmed Ali</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+          <div class="glass-card member-card entrepreneurs best-member spotlight-card" data-name="anoud yasser">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">AY</div>
+            <div class="member-info"><h4 class="member-name">Anoud Yasser</h4><div class="member-role">Entrepreneurs Member</div><div class="member-dept">Entrepreneurs</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── OPERATIONS ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Operations Committee</h2>
+        <div class="team-grid">
+
+          <div class="glass-card member-card operations spotlight-card" data-name="menna khaled yahia">
+            <div class="member-avatar">MY</div>
+            <div class="member-info"><h4 class="member-name">Menna Khaled Yahia</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="ziyad walid abdel fattah">
+            <div class="member-avatar">ZF</div>
+            <div class="member-info"><h4 class="member-name">Ziyad Walid Abdel Fattah</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="menna hisham farouk">
+            <div class="member-avatar">MF</div>
+            <div class="member-info"><h4 class="member-name">Menna Hisham Farouk</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations best-member spotlight-card" data-name="zeyad abdelrahman ali">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">ZA</div>
+            <div class="member-info"><h4 class="member-name">Zeyad Abdelrahman Ali</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="malak rami mohamed">
+            <div class="member-avatar">MM</div>
+            <div class="member-info"><h4 class="member-name">Malak Rami Mohamed</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations best-member spotlight-card" data-name="mahmoud mostafa behairy">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">MB</div>
+            <div class="member-info"><h4 class="member-name">Mahmoud Mostafa Behairy</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="maya hisham">
+            <div class="member-avatar">MH</div>
+            <div class="member-info"><h4 class="member-name">Maya Hisham</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="omar garhy">
+            <div class="member-avatar">OG</div>
+            <div class="member-info"><h4 class="member-name">Omar Garhy</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="arwa mamdoh abd elkader">
+            <div class="member-avatar">AA</div>
+            <div class="member-info"><h4 class="member-name">Arwa Mamdoh Abd Elkader</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="assim abd elsadek">
+            <div class="member-avatar">AS</div>
+            <div class="member-info"><h4 class="member-name">Assim Abd Elsadek</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+          <div class="glass-card member-card operations spotlight-card" data-name="menna ahmed">
+            <div class="member-avatar">MA</div>
+            <div class="member-info"><h4 class="member-name">Menna Ahmed</h4><div class="member-role">Operations Member</div><div class="member-dept">Operations</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── BUSINESS DEVELOPMENT ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Business Development Committee</h2>
+        <div class="team-grid">
+
+          <div class="glass-card member-card bd spotlight-card" data-name="jana khaled">
+            <div class="member-avatar">JK</div>
+            <div class="member-info"><h4 class="member-name">Jana Khaled</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd spotlight-card" data-name="habiba said hassan">
+            <div class="member-avatar">HH</div>
+            <div class="member-info"><h4 class="member-name">Habiba Said Hassan</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd spotlight-card" data-name="zeina waleed">
+            <div class="member-avatar">ZW</div>
+            <div class="member-info"><h4 class="member-name">Zeina Waleed</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd spotlight-card" data-name="abderhman reda">
+            <div class="member-avatar">AR</div>
+            <div class="member-info"><h4 class="member-name">Abderhman Reda</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd best-member spotlight-card" data-name="arwa ahmad ellithy">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">AE</div>
+            <div class="member-info"><h4 class="member-name">Arwa Ahmad Ellithy</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd spotlight-card" data-name="yara mejahed ali">
+            <div class="member-avatar">YA</div>
+            <div class="member-info"><h4 class="member-name">Yara Mejahed Ali</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd best-member spotlight-card" data-name="mariam ashraf gad">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">MG</div>
+            <div class="member-info"><h4 class="member-name">Mariam Ashraf Gad</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+          <div class="glass-card member-card bd spotlight-card" data-name="basmala ahmed">
+            <div class="member-avatar">BA</div>
+            <div class="member-info"><h4 class="member-name">Basmala Ahmed</h4><div class="member-role">BD Member</div><div class="member-dept">Business Development</div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── TALENT MANAGEMENT ── -->
+      <div class="team-grid-section">
+        <h2 class="team-grid-heading">Talent Management Committee</h2>
+        <div class="team-grid">
+
+          <div class="glass-card member-card talent spotlight-card" data-name="hadeer ramadan mohamed">
+            <div class="member-avatar">HM</div>
+            <div class="member-info"><h4 class="member-name">Hadeer Ramadan Mohamed</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="youssef ahmed nasr eldin">
+            <div class="member-avatar">YE</div>
+            <div class="member-info"><h4 class="member-name">Youssef Ahmed Nasr Eldin</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="omar ramadan mahmoud">
+            <div class="member-avatar">OM</div>
+            <div class="member-info"><h4 class="member-name">Omar Ramadan Mahmoud</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent best-member spotlight-card" data-name="yassin ashraf">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">YA</div>
+            <div class="member-info"><h4 class="member-name">Yassin Ashraf</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="malika ahmed erfan el darwish">
+            <div class="member-avatar">MD</div>
+            <div class="member-info"><h4 class="member-name">Malika Ahmed Erfan El Darwish</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="salma hany hussein ali">
+            <div class="member-avatar">SA</div>
+            <div class="member-info"><h4 class="member-name">Salma Hany Hussein Ali</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="yasmin said">
+            <div class="member-avatar">YS</div>
+            <div class="member-info"><h4 class="member-name">Yasmin Said</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent spotlight-card" data-name="mohamed karam ali">
+            <div class="member-avatar">MA</div>
+            <div class="member-info"><h4 class="member-name">Mohamed Karam Ali</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+          <div class="glass-card member-card talent best-member spotlight-card" data-name="mohamed sherif">
+            <span class="best-member-badge"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>Best Member</span>
+            <div class="member-avatar">MS</div>
+            <div class="member-info"><h4 class="member-name">Mohamed Sherif</h4><div class="member-role">Talent Member</div><div class="member-dept">Talent Management</div></div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-container" style="margin-bottom: 14px; display: inline-flex;">
+            <img src="assets/img/logos/rally-main-logo.png" alt="Rally Logo">
+            <span class="brand-text">RALLY ACU</span>
+          </a>
+          <p class="footer-brand-tagline">"driven by speed, defined by impact"</p>
+          <p class="footer-brand-desc">Building the next generation of entrepreneurial leaders at Ahram Canadian University. Guidance under Dr. Ragaa Magdy.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="seasons.html">Seasons</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="https://forms.gle/3cfzVsgtwSCeg1kd9" target="_blank">Join 26/27</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Committees</h5>
+          <ul>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Entrepreneurs</a></li>
+            <li><a href="#">Operations</a></li>
+            <li><a href="#">Business Dev</a></li>
+            <li><a href="#">Talent Mgmt</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <div class="social-row" style="margin-bottom: 1.5rem;">
+            <a href="https://www.facebook.com/share/1CrQotw6cx/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg></a>
+            <a href="https://www.instagram.com/rally.acu?igsh=MWR3c214c2cwdGNkNA==" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://www.tiktok.com/@rally.acu?_r=1&_t=ZS-97e6Ya2uEYp" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+          </div>
+          <div class="footer-logos">
+            <img src="assets/img/logos/acu-logo.png" alt="ACU">
+            <img src="assets/img/logos/rally-egypt-logo.png" alt="Rally Egypt">
+            <img src="assets/img/logos/aast-ec-logo.png" alt="AAST EC">
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Rally ACU — Ahram Canadian University. All rights reserved.</span>
+        <span>Driven by speed, defined by impact ⚡</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button with circular progress -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg class="progress-circle" width="48" height="48" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" class="progress-circle-bg"></circle>
+      <circle cx="50" cy="50" r="40" class="progress-circle-fill" id="btt-progress-bar"></circle>
+    </svg>
+    <span class="arrow-up">↑</span>
+  </button>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
