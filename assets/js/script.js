@@ -4,7 +4,48 @@
    Gallery · Lightbox · Counters · Theme · Search
    ===================================================== */
 
+// ─── 0. CLEAN URL MANAGER (Strips .html & index.html on live web) ────────
+(function() {
+  if (typeof window !== 'undefined' && window.location.protocol.startsWith('http')) {
+    const path = window.location.pathname;
+    let clean = path;
+
+    // Convert /index.html -> /
+    if (clean.endsWith('/index.html')) {
+      clean = clean.slice(0, -10) || '/';
+    } else if (clean === '/index.html' || clean === 'index.html') {
+      clean = '/';
+    } else if (clean.endsWith('.html')) {
+      // Convert /page.html -> /page
+      clean = clean.slice(0, -5);
+    }
+
+    if (clean !== path) {
+      window.history.replaceState(null, document.title, clean + window.location.search + window.location.hash);
+    }
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ─── 0.1 CLEAN INTERNAL LINKS ON LIVE WEB ─────────
+  if (window.location.protocol.startsWith('http')) {
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+
+      if (href === 'index.html' || href === './index.html') {
+        link.setAttribute('href', './');
+      } else if (href.startsWith('index.html#')) {
+        link.setAttribute('href', './' + href.substring(10));
+      } else if (href.endsWith('.html')) {
+        link.setAttribute('href', href.slice(0, -5));
+      } else if (href.includes('.html#')) {
+        link.setAttribute('href', href.replace('.html#', '#'));
+      }
+    });
+  }
+
 
   // ─── 1. THEME MANAGER ─────────────────────────────
   const themeToggle = document.getElementById('theme-toggle');
