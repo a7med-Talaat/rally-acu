@@ -1,40 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rally ACU</title>
+  <title>404: Off-Track | Rally ACU</title>
+  <meta name="description" content="You've drifted off the rally track. Return to the starting grid and explore Rally ACU.">
+  <link rel="icon" type="image/png" href="assets/img/logos/rally-main-logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+
   <script>
+    // Smart Router: If this is a valid clean URL on GitHub Pages, redirect immediately
     (function() {
-      var path = window.location.pathname;
-      var clean = path.replace(/\/$/, '');
-      var segment = clean.split('/').pop().toLowerCase();
+      if (window.location.protocol.startsWith('http')) {
+        var path = window.location.pathname;
+        var clean = path.replace(/\/$/, '');
+        var segment = clean.split('/').pop().toLowerCase();
 
-      // Handle home or empty route -> redirect to root
-      if (segment === 'home' || segment === '' || segment === 'index') {
-        window.location.replace('/' + window.location.search + window.location.hash);
-        return;
+        // Handle /home or empty route -> redirect to root
+        if (segment === 'home' || segment === '' || segment === 'index') {
+          window.location.replace('/' + window.location.search + window.location.hash);
+          return;
+        }
+
+        // Valid clean pages mapping
+        var validPages = {
+          'seasons': '/seasons.html',
+          'team': '/team.html',
+          'final-festival': '/final-festival.html',
+          'achievements': '/achievements.html'
+        };
+
+        if (validPages[segment]) {
+          window.location.replace(validPages[segment] + window.location.search + window.location.hash);
+          return;
+        }
       }
-
-      // Valid clean pages mapping
-      var validPages = {
-        'seasons': '/seasons.html',
-        'team': '/team.html',
-        'final-festival': '/final-festival.html',
-        'achievements': '/achievements.html'
-      };
-
-      if (validPages[segment]) {
-        window.location.replace(validPages[segment] + window.location.search + window.location.hash);
-        return;
-      }
-
-      // Fallback redirect to root
-      window.location.replace('/' + window.location.search + window.location.hash);
     })();
   </script>
 </head>
-<body style="background:#09090b; color:#fff; font-family:sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">
-  <p>Navigating to <a href="/" style="color:#ef4444; text-decoration:none; font-weight:bold;">Rally ACU</a>...</p>
+<body>
+
+  <!-- Ambient Particles Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Glow Orbs -->
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="main-header" id="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-container" aria-label="Rally ACU Home">
+        <img src="assets/img/logos/rally-main-logo.png" alt="Rally ACU Logo">
+        <span class="brand-text">RALLY ACU</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html#about" class="nav-link">About Us</a></li>
+          <li><a href="seasons.html" class="nav-link">Seasons</a></li>
+          <li><a href="team.html" class="nav-link">Our Team</a></li>
+          <li><a href="final-festival.html" class="nav-link">Final Festival</a></li>
+          <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="index.html#register" class="nav-link">Join Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="error-page-section container">
+      <div class="error-content-card spotlight-card reveal">
+        
+        <!-- Pit Crew Race Badge -->
+        <div class="error-badge-race">
+          <span>🏎️</span>
+          <span>Pit Stop &middot; Off-Track Warning</span>
+        </div>
+
+        <!-- Huge 404 with Tachometer Needle -->
+        <div>
+          <div class="error-huge-num">
+            404
+            <span class="error-speed-needle" title="Needle Pegged at Max">🧭</span>
+          </div>
+        </div>
+
+        <h1 class="error-heading">
+          You've Veered Off The Rally Track!
+        </h1>
+
+        <p class="error-subtext">
+          Looks like your navigation drifted off-course. Even seasoned founders and rally drivers take an unexpected turn on the journey. Let's get you back in the race.
+        </p>
+
+        <!-- High-tech Telemetry Pit Box -->
+        <div class="error-pitstop-box">
+          <div class="pitstop-item">
+            <span class="pitstop-label">Telemetry Status</span>
+            <span class="pitstop-val" style="color: var(--red);">OFF_COURSE_404</span>
+          </div>
+          <div class="pitstop-item">
+            <span class="pitstop-label">Current Gear</span>
+            <span class="pitstop-val">NEUTRAL [N]</span>
+          </div>
+          <div class="pitstop-item">
+            <span class="pitstop-label">Pit Crew Order</span>
+            <span class="pitstop-val" style="color: #f59e0b;">RETURN_TO_GRID</span>
+          </div>
+          <div class="pitstop-item">
+            <span class="pitstop-label">Motto</span>
+            <span class="pitstop-val">SPEED &amp; IMPACT</span>
+          </div>
+        </div>
+
+        <!-- Main Recovery Actions -->
+        <div class="error-actions">
+          <a href="index.html" class="btn-primary" style="padding: 14px 28px; border-radius: 30px; font-size: 0.95rem;">
+            🏁 Return to Starting Grid
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+          <a href="seasons.html" class="btn-outline" style="padding: 14px 24px; border-radius: 30px; font-size: 0.95rem;">
+            View Seasons &amp; Events
+          </a>
+        </div>
+
+        <!-- Quick Rally Checkpoints -->
+        <div class="error-quick-destinations">
+          <div class="error-quick-title">Quick Checkpoints &amp; Pits</div>
+          <div class="error-dest-chips">
+            <a href="achievements.html" class="error-chip">🏆 Achievements &amp; Trophy</a>
+            <a href="final-festival.html" class="error-chip">🎪 Final Festival</a>
+            <a href="team.html" class="error-chip">👥 Meet the Team</a>
+            <a href="index.html#register" class="error-chip">⚡ Join Rally ACU</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo-container" style="margin-bottom: 14px; display: inline-flex;">
+            <img src="assets/img/logos/rally-main-logo.png" alt="Rally Logo">
+            <span class="brand-text">RALLY ACU</span>
+          </a>
+          <p class="footer-brand-tagline">"driven by speed, defined by impact"</p>
+          <p class="footer-brand-desc">Building the next generation of entrepreneurial leaders at Ahram Canadian University.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="seasons.html">Seasons</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="final-festival.html">Final Festival</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="https://forms.gle/3cfzVsgtwSCeg1kd9" target="_blank">Join 26/27</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Events</h5>
+          <ul>
+            <li><a href="final-festival.html">Final Festival</a></li>
+            <li><a href="seasons.html">How to Start Your Startup</a></li>
+            <li><a href="seasons.html">Regional Competition</a></li>
+            <li><a href="seasons.html">Football League</a></li>
+            <li><a href="seasons.html">Ramadan Iftar</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect With Us</h5>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.6;">Follow Rally ACU for real-time announcements &amp; events.</p>
+          <div class="social-row" style="margin-bottom: 1.5rem;">
+            <a href="https://www.facebook.com/share/1CrQotw6cx/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/rallystartupfestival/?hl=en" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram Festival">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/rally.acu?igsh=MWR3c214c2cwdGNkNA==" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram Rally ACU">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+          <div class="footer-logos">
+            <img src="assets/img/logos/acu-logo.png" alt="ACU">
+            <img src="assets/img/logos/rally-egypt-logo.png" alt="Rally Egypt">
+            <img src="assets/img/logos/aast-ec-logo.png" alt="AAST EC">
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Rally ACU &mdash; Ahram Canadian University. All rights reserved.</span>
+        <span>Driven by speed, defined by impact &#x26a1;</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
