@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rally Startup Festival 2026 | Rally ACU</title>
+  <meta name="description" content="Official page for the Rally Startup Festival 2026 — the grand final festival and Innovation City held on September 30, 2026, at AlBurouj Cultural Hub, organized with the AAST Entrepreneurship Center and Rally ACU.">
+  <meta name="keywords" content="Rally Startup Festival, Final Festival, Rally ACU, AAST Entrepreneurship Center, AlBurouj Cultural Hub, Startup Innovation City, Cairo, Entrepreneurship Egypt, Dr. Sherine Helmy">
+  <meta name="author" content="Rally ACU">
+  <meta property="og:title" content="Rally Startup Festival 2026 | The Final Festival">
+  <meta property="og:description" content="Step into the Innovation City at AlBurouj Cultural Hub on September 30, 2026. 6 districts, 50+ startups, top speakers, and free entry with registration.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="assets/img/logos/rally-main-logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Particles Canvas -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Glow Orbs -->
+  <div class="glow-orb orb-1" aria-hidden="true"></div>
+  <div class="glow-orb orb-2" aria-hidden="true"></div>
+  <div class="glow-orb orb-3" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="main-header" id="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo-container" aria-label="Rally ACU Home">
+        <img src="assets/img/logos/rally-main-logo.png" alt="Rally ACU Logo">
+        <span class="brand-text">RALLY ACU</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html#about" class="nav-link">About Us</a></li>
+          <li><a href="seasons.html" class="nav-link">Seasons</a></li>
+          <li><a href="team.html" class="nav-link">Our Team</a></li>
+          <li><a href="final-festival.html" class="nav-link active">Final Festival</a></li>
+          <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+          <li><a href="index.html#register" class="nav-link">Join Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle light and dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══ PAGE HERO ═══════════════════════════════════ -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="hero-badge" aria-label="Grand Finale Event">
+          <span class="hero-badge-dot"></span>
+          <span class="hero-badge-pill">September 30, 2026</span>
+          <span class="hero-badge-text">AlBurouj Cultural Hub</span>
+        </div>
+
+        <h1 class="page-hero-title">
+          Rally Startup Festival 2026
+        </h1>
+
+        <p class="page-hero-desc">
+          Welcome to the <strong>Startup Innovation City</strong> — the grand final festival of the Rally Egypt Entrepreneurship competition. Step into six immersive districts designed to empower the next generation of founders, creators, and innovators.
+        </p>
+
+        <!-- Festival Meta Pills -->
+        <div class="festival-hero-meta">
+          <div class="festival-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Wednesday, September 30, 2026</span>
+          </div>
+          <div class="festival-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>AlBurouj Cultural Hub, New Heliopolis</span>
+          </div>
+          <div class="festival-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Free Admission (Registration Required)</span>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="https://forms.gle/kqRmgGmAv3vtH2qd8" target="_blank" rel="noopener noreferrer" class="btn-primary" id="btn-festival-register">
+            Register for Free
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="https://www.instagram.com/rallystartupfestival/?hl=en" target="_blank" rel="noopener noreferrer" class="btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            @rallystartupfestival
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ═══ THE 6 DISTRICTS OF INNOVATION CITY ═════════════ -->
+    <section class="section-padding container" id="districts">
+      <div class="section-header text-center">
+        <span class="section-tag" style="justify-content: center;">Innovation City</span>
+        <h2 class="section-title reveal">The 6 Interactive Districts</h2>
+        <p class="section-subtitle reveal">
+          As showcased on Instagram (@rallystartupfestival), the venue transforms into a complete startup city covering every stage of the entrepreneurial journey.
+        </p>
+      </div>
+
+      <div class="district-grid reveal">
+
+        <!-- District 1 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 01</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+          </div>
+          <h3>Innovation Village</h3>
+          <p>
+            The epicenter of research and breakthrough tech. Discover cutting-edge graduation projects, working engineering prototypes, AI-driven solutions, and deep-tech inventions from universities across Egypt.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>University Research Inventions</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Robotics, AI &amp; Hardware Demos</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Commercial Feasibility Showcases</li>
+          </ul>
+        </div>
+
+        <!-- District 2 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 02</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+          </div>
+          <h3>Founder Factory</h3>
+          <p>
+            An intensive workshop machine for founders and executives. Dive into masterclasses covering fundraising mindset, business model validation, team scaling, and investor pitch preparation.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Fund Mindset &amp; Capital Raising</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Leadership &amp; Founder Etiquette</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Energy &amp; Productivity Optimization</li>
+          </ul>
+        </div>
+
+        <!-- District 3 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 03</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+            </div>
+          </div>
+          <h3>Go Viral</h3>
+          <p>
+            Unlocking the power of modern storytelling, content marketing, and organic growth. Learn how to craft viral campaigns, build founder personal branding, and create studio-grade mobile video content.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Mobile Filmmaking &amp; Content Creation</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Growth Hacking &amp; Social Reach</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Brand Positioning &amp; PR Strategy</li>
+          </ul>
+        </div>
+
+        <!-- District 4 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 04</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            </div>
+          </div>
+          <h3>The Marketplace</h3>
+          <p>
+            The buzzing commercial bazaar of the festival. Student startups set up dynamic exhibition booths to interact directly with early adopters, demo their apps, sell tangible goods, and capture customer feedback.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Live Product Sales &amp; Demos</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Direct User Testing &amp; Acquisition</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>B2B &amp; B2C Commercial Exchange</li>
+          </ul>
+        </div>
+
+        <!-- District 5 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 05</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+          </div>
+          <h3>Rally Square</h3>
+          <p>
+            The heart and main arena of the festival city. Featuring keynote addresses by Egyptian corporate titans, fiery panel debates on the startup ecosystem, and the championship final pitch battles.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Headlining Corporate Keynotes</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Grand Pitch Finals &amp; Defense</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>National Awards Ceremony &amp; Trophy Gala</li>
+          </ul>
+        </div>
+
+        <!-- District 6 -->
+        <div class="district-card spotlight-card">
+          <div class="district-header">
+            <span class="district-num">District 06</span>
+            <div class="district-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+          </div>
+          <h3>Festival District</h3>
+          <p>
+            Where connection meets celebration. Unwind in relaxing networking pods, enjoy student society activations, take commemorative photos at interactive installations, and build lifelong friendships.
+          </p>
+          <ul class="district-highlights">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Ecosystem Networking Lounges</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Live Entertainment &amp; Fun Zones</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Student Chapter Activations</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ RALLY PASSPORT EXPERIENCE (INNOVATION CITY QUEST) ════════ -->
+    <section class="section-padding passport-section-wrapper" id="passport">
+      <div class="passport-bg-glow" aria-hidden="true"></div>
+      <div class="passport-bg-glow-2" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" style="justify-content: center; border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;">Interactive City Experience</span>
+          <h2 class="section-title reveal">Your Rally Passport</h2>
+          <p class="section-subtitle reveal">
+            As revealed by the festival organizers, every registered attendee receives an official physical <strong>Rally Passport</strong> at the entrance. Travel through all 6 districts, collect your stamps, and complete the journey!
+          </p>
+        </div>
+
+        <!-- Passport Booklet Card -->
+        <div class="passport-booklet-card reveal">
+          
+          <!-- Passport Header Meta -->
+          <div class="passport-header-bar">
+            <div class="passport-title-wrap">
+              <div class="passport-emblem">🛂</div>
+              <div>
+                <h3>Rally Startup City Passport</h3>
+                <span>Official Founder Travel Document &middot; 2026 Edition</span>
+              </div>
+            </div>
+            <div class="passport-meta-tags">
+              <span class="passport-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                September 30, 2026
+              </span>
+              <span class="passport-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                AlBurouj Cultural Hub
+              </span>
+              <span class="passport-tag" style="border-color: rgba(245, 158, 11, 0.4); color: #f59e0b;">
+                Pass ID: #RSF-2026-FOUNDER
+              </span>
+            </div>
+          </div>
+
+          <!-- 4-Step Journey Roadmap -->
+          <div class="passport-steps-grid">
+            <div class="passport-step-box spotlight-card">
+              <div class="passport-step-num">1</div>
+              <h4>Register &amp; Claim</h4>
+              <p>Register via the official link in advance. Pick up your physical passport booklet upon entering through the City Gates.</p>
+            </div>
+
+            <div class="passport-step-box spotlight-card">
+              <div class="passport-step-num">2</div>
+              <h4>Explore 6 Districts</h4>
+              <p>Navigate each thematic zone: Innovation Village, Founder Factory, Go Viral, Marketplace, Rally Square &amp; Festival District.</p>
+            </div>
+
+            <div class="passport-step-box spotlight-card">
+              <div class="passport-step-num">3</div>
+              <h4>Collect Stamps</h4>
+              <p>Attend masterclasses, test prototypes, and engage with mentors to receive an ink stamp at each district checkpoint.</p>
+            </div>
+
+            <div class="passport-step-box spotlight-card">
+              <div class="passport-step-num">4</div>
+              <h4>Complete Journey</h4>
+              <p>Collect all 6 stamps to complete your Rally journey and unlock exclusive ecosystem privileges, recognition &amp; rewards.</p>
+            </div>
+          </div>
+
+          <!-- 6 District Passport Stamps Collector Showcase -->
+          <div class="passport-stamps-title">
+            <span>District Visas &amp; Checkpoint Stamps</span>
+          </div>
+
+          <div class="passport-stamps-grid">
+            
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 01</div>
+              <div class="stamp-name">Innovation Village</div>
+              <p class="stamp-desc">Tech &amp; Prototypes</p>
+            </div>
+
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 02</div>
+              <div class="stamp-name">Founder Factory</div>
+              <p class="stamp-desc">Masterclasses &amp; Skills</p>
+            </div>
+
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 03</div>
+              <div class="stamp-name">Go Viral District</div>
+              <p class="stamp-desc">Media &amp; Branding</p>
+            </div>
+
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 04</div>
+              <div class="stamp-name">Marketplace</div>
+              <p class="stamp-desc">Startup Demos &amp; Products</p>
+            </div>
+
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 05</div>
+              <div class="stamp-name">Rally Square</div>
+              <p class="stamp-desc">Pitch Battles &amp; Stage</p>
+            </div>
+
+            <div class="stamp-card">
+              <div class="stamp-district-badge">District 06</div>
+              <div class="stamp-name">Festival District</div>
+              <p class="stamp-desc">Networking &amp; Awards Gala</p>
+            </div>
+
+          </div>
+
+          <!-- Passport Bottom CTA Link -->
+          <div class="passport-cta-row">
+            <a href="https://forms.gle/kqRmgGmAv3vtH2qd8" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+              Register to Secure Your Passport
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURED SPEAKERS & SESSIONS ═══════════════════ -->
+    <section class="section-padding container" id="speakers">
+      <div class="section-header text-center">
+        <span class="section-tag" style="justify-content: center;">Stage Luminaries</span>
+        <h2 class="section-title reveal">Featured Speakers &amp; Masterclasses</h2>
+        <p class="section-subtitle reveal">
+          18 verified speakers, entrepreneurs, and executives leading masterclasses across the Rally Startup Festival stages.
+        </p>
+      </div>
+
+      <!-- Stage Filter Tabs -->
+      <div class="speakers-filter-bar reveal">
+        <button class="speaker-filter-btn active" data-stage-filter="all">All Speakers (18)</button>
+        <button class="speaker-filter-btn" data-stage-filter="main">Main Stage (3)</button>
+        <button class="speaker-filter-btn" data-stage-filter="founder">Founder Stage (8)</button>
+        <button class="speaker-filter-btn" data-stage-filter="startup">Startup Stage (7)</button>
+      </div>
+
+      <div class="speakers-grid reveal">
+
+        <!-- Speaker 1: Dr. Sherine Helmy -->
+        <div class="speaker-card spotlight-card" data-stage="main">
+          <span class="speaker-stage-tag stage-main">Main Stage &middot; Keynote</span>
+          <div class="speaker-avatar-circle">SH</div>
+          <div class="speaker-name">Dr. Sherine Helmy</div>
+          <div class="speaker-role">Chairman of Pharco Corporation &middot; 44+ Years in Pharma &amp; Healthcare Leadership (DBA AAST, Harvard Exec Ed)</div>
+          <div class="speaker-session-pill">
+            <strong>Keynote Address</strong>
+            Decades of Leadership, Scaling &amp; Building Resilient Organizations
+          </div>
+          <a href="https://www.instagram.com/p/DdRJn4fK00d/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 2: Salah Abo El Magd -->
+        <div class="speaker-card spotlight-card" data-stage="main">
+          <span class="speaker-stage-tag stage-main">Main Stage &middot; Festival District</span>
+          <div class="speaker-avatar-circle">SM</div>
+          <div class="speaker-name">Salah Abo El-Magd</div>
+          <div class="speaker-role">CEO of ACTA, International Sales Trainer &amp; Leadership Coach (15+ yrs, trained 50,000+ across Middle East)</div>
+          <div class="speaker-session-pill">
+            <strong>Main Stage Keynote</strong>
+            Behavioral Transformation, High Performance &amp; Founder Sales Mindset
+          </div>
+          <a href="https://www.instagram.com/p/DdYuBlxM5gX/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 3: Medhat Yassin -->
+        <div class="speaker-card spotlight-card" data-stage="main">
+          <span class="speaker-stage-tag stage-main">Main Stage &middot; Keynote</span>
+          <div class="speaker-avatar-circle">MY</div>
+          <div class="speaker-name">Medhat Yassin</div>
+          <div class="speaker-role">Strategic Business Transformation Consultant &amp; Serial Entrepreneur (30+ yrs IBM, P&amp;G, Burger King MENA)</div>
+          <div class="speaker-session-pill">
+            <strong>Keynote Masterclass</strong>
+            &ldquo;Marketing &mdash; Inside Out&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdPRRtaiq2H/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 4: Ayman Elsherbiny -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">AE</div>
+          <div class="speaker-name">Ayman Elsherbiny</div>
+          <div class="speaker-role">No. 1 Influencer on LinkedIn Egypt &middot; Personal Branding Consultant with 700,000+ Followers</div>
+          <div class="speaker-session-pill">
+            <strong>Masterclass Session</strong>
+            &ldquo;How to Use LinkedIn to Open Business Opportunities&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdeUyNdMhOQ/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 5: Amr Abdel Karim -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Startup Factory</span>
+          <div class="speaker-avatar-circle">AA</div>
+          <div class="speaker-name">Amr Abdel Karim</div>
+          <div class="speaker-role">Founder &amp; Managing Partner of AKOUN &amp; QEYMA &middot; Commercial Transformation Executive (25+ yrs)</div>
+          <div class="speaker-session-pill">
+            <strong>Practical Session</strong>
+            &ldquo;Marketing in the Digital Era&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdeuCj4MfP2/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 6: Mostafa Gabr -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">MG</div>
+          <div class="speaker-name">Mostafa Gabr</div>
+          <div class="speaker-role">Productivity Consultant &amp; Founder of Be Productive Training &amp; Consulting &middot; 2x TEDx Speaker</div>
+          <div class="speaker-session-pill">
+            <strong>High-Impact Session</strong>
+            &ldquo;A Founder's Deadliest Enemy Isn't the Competition. It's Time.&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdE96efsTQq/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 7: Dr. Manar Barr -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">MB</div>
+          <div class="speaker-name">Dr. Manar Barr</div>
+          <div class="speaker-role">Physician turned Image Architect &amp; Executive Presence Expert &middot; Positive Psychology &amp; Styling</div>
+          <div class="speaker-session-pill">
+            <strong>Executive Etiquette</strong>
+            &ldquo;Business Etiquette Nobody Teaches Founders&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdEmpdjMrFv/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 8: Mohamed Al Sheikh -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">MS</div>
+          <div class="speaker-name">Mohamed Al Sheikh</div>
+          <div class="speaker-role">Founder of Enervive Community &middot; #6 Motivation Creator in Egypt &middot; Host of Bash Coach Podcast</div>
+          <div class="speaker-session-pill">
+            <strong>Performance Mastery</strong>
+            &ldquo;How to Manage Your Energy, Not Just Your Time&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/Dc6j-LvsEFl/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 9: Abdullah Amer -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">AA</div>
+          <div class="speaker-name">Abdullah Amer</div>
+          <div class="speaker-role">CEO of Capsules Group, Founder of English Capsules &amp; Executive Mastery Camp (15+ yrs)</div>
+          <div class="speaker-session-pill">
+            <strong>Storytelling &amp; Influence</strong>
+            &ldquo;How to Tell a Story That People Remember&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdOHNw4MKQG/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 10: Mohamed El-Demerdash -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">MD</div>
+          <div class="speaker-name">Mohamed El-Demerdash</div>
+          <div class="speaker-role">Chairman of ABS Courier &middot; 28 Years of Industry Leadership in Logistics &amp; Operations</div>
+          <div class="speaker-session-pill">
+            <strong>Founder Risk Strategy</strong>
+            &ldquo;Your Biggest Client Could Be Your Biggest Risk&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdTaYyCMh4v/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 11: Amany Helmy -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">AH</div>
+          <div class="speaker-name">Amany Helmy</div>
+          <div class="speaker-role">HR Entrepreneur, People &amp; Growth Strategist &middot; Founder &amp; CEO of Blissify (trained 3,000+ pros)</div>
+          <div class="speaker-session-pill">
+            <strong>Team Building Masterclass</strong>
+            &ldquo;Your First 10 People Will Shape Your Business&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdTlcYbsdX0/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 12: Mohamed Hossam -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Startup Factory</span>
+          <div class="speaker-avatar-circle">MH</div>
+          <div class="speaker-name">Mohamed Hossam</div>
+          <div class="speaker-role">Digital Architect &amp; Global Marketing Consultant with 10+ Years across EMEA and the US</div>
+          <div class="speaker-session-pill">
+            <strong>Growth Strategy</strong>
+            &ldquo;How to Start Marketing Your Startup with Zero Budget&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdTVYG9MiB1/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 13: Ahmed Fathy -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">AF</div>
+          <div class="speaker-name">Ahmed Fathy</div>
+          <div class="speaker-role">Founder &amp; CEO of MEDEX &middot; Sustainability Leader &amp; 14x Award Winner (MSc Business Innovation, Leeds)</div>
+          <div class="speaker-session-pill">
+            <strong>Networking Masterclass</strong>
+            &ldquo;How to Build a Powerful Network from Zero&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdHO7lqsl7A/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 14: Omar Dagher -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">OD</div>
+          <div class="speaker-name">Omar Dagher</div>
+          <div class="speaker-role">Videographer, Video Editor &amp; Mobile Video Production Trainer with 9+ Years &middot; 600+ Hours Delivered</div>
+          <div class="speaker-session-pill">
+            <strong>Creator Masterclass</strong>
+            &ldquo;How to Make Professional Videos with Your Phone&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/DdAAe1FMjqr/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 15: Heba Soliman -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">HS</div>
+          <div class="speaker-name">Heba Soliman</div>
+          <div class="speaker-role">Founder &amp; CEO of Hobz EG &middot; Expert in Wholesale Clothing &amp; Founder Branding</div>
+          <div class="speaker-session-pill">
+            <strong>Brand Presence</strong>
+            &ldquo;How to Become the Face of Your Startup&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/Dc_cHm7s44N/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 16: Moataz Mousa -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">MM</div>
+          <div class="speaker-name">Moataz Mousa</div>
+          <div class="speaker-role">L&amp;D Consultant &amp; Certified Professional Trainer (CPT) with 12+ Years Corporate Training</div>
+          <div class="speaker-session-pill">
+            <strong>Leadership Communication</strong>
+            &ldquo;How to Communicate Like a Leader&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/Dc83HNoMMFQ/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 17: Khaled Helmy -->
+        <div class="speaker-card spotlight-card" data-stage="startup">
+          <span class="speaker-stage-tag stage-startup">Startup Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">KH</div>
+          <div class="speaker-name">Khaled Helmy</div>
+          <div class="speaker-role">Senior Supply Chain &amp; S&amp;OP Leader (P&amp;G, Mondelēz, Beyti) &middot; Vocal Coach &amp; The Voice Alum</div>
+          <div class="speaker-session-pill">
+            <strong>Dual Career Strategy</strong>
+            &ldquo;How to Balance Dual Career&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/Dc81-amMx_0/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+        <!-- Speaker 18: Aya Hamza -->
+        <div class="speaker-card spotlight-card" data-stage="founder">
+          <span class="speaker-stage-tag stage-founder">Founder Stage &middot; Founder Factory</span>
+          <div class="speaker-avatar-circle">AH</div>
+          <div class="speaker-name">Aya Hamza</div>
+          <div class="speaker-role">HR Business Consultant &amp; PCC Certified Coach &middot; Doctorate in Psychology of Human Resources (12+ yrs)</div>
+          <div class="speaker-session-pill">
+            <strong>Founder Mental Health</strong>
+            &ldquo;How to Stay Mentally Strong Through the Founder Journey&rdquo;
+          </div>
+          <a href="https://www.instagram.com/p/Dc6STIKMNKR/?hl=en" target="_blank" rel="noopener noreferrer" class="speaker-post-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg>
+            Instagram Post &nearr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ VENUE & LOCATION ════════════════════════════════ -->
+    <section class="section-padding container" id="location">
+      <div class="section-header text-center">
+        <span class="section-tag" style="justify-content: center;">Find Us</span>
+        <h2 class="section-title reveal">Venue &amp; Location</h2>
+        <p class="section-subtitle reveal">
+          Join us at the iconic AlBurouj Cultural Hub in New Heliopolis — where Startup Innovation City comes to life.
+        </p>
+      </div>
+
+      <div class="venue-map-wrap reveal">
+
+        <!-- Venue info card -->
+        <div class="venue-info-card spotlight-card">
+          <div class="venue-info-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div class="venue-info-body">
+            <h4>AlBurouj Cultural Hub</h4>
+            <p>New Heliopolis (El Shorouk), Cairo Governorate, Egypt</p>
+            <p class="venue-date-pill">📅 Wednesday, September 30, 2026</p>
+            <a href="https://maps.app.goo.gl/fp3vP4EcymnYKucK9" target="_blank" rel="noopener noreferrer" class="venue-directions-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Embedded Google Map -->
+        <div class="venue-map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=30.147,31.647&output=embed&z=15"
+            width="100%"
+            height="380"
+            style="border: 0; border-radius: var(--radius-md); display: block;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="AlBurouj Cultural Hub location on Google Maps"
+          ></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ══════════════════════════════ -->
+    <section class="section-padding" id="faq" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Questions &amp; Answers</span>
+          <h2 class="section-title reveal">Frequently Asked Questions</h2>
+          <p class="section-desc reveal reveal-delay-1">Details regarding attendance, location, districts, and tickets for the festival.</p>
+        </div>
+
+        <div class="faq-accordion-container">
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-1">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-fest-1">
+              <span>When and where is the Rally Startup Festival held?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-fest-1">
+              <p>The festival will take place on Wednesday, September 30, 2026, at the AlBurouj Cultural Hub located in New Heliopolis, Cairo, Egypt.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-2">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-fest-2">
+              <span>Is admission free?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-fest-2">
+              <p>Yes! Admission to the festival, workshops, marketplace, and stage keynotes is completely free. However, pre-registration is required to receive your entry QR pass.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-3">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-fest-3">
+              <span>Can anyone attend the workshops and districts?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-fest-3">
+              <p>Yes, all six districts (Innovation Village, Founder Factory, Go Viral, Marketplace, Rally Square, and Festival District) are open to all registered attendees, students, entrepreneurs, and tech enthusiasts.</p>
+            </div>
+          </div>
+
+          <div class="faq-item glass-card spotlight-card reveal reveal-delay-4">
+            <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-fest-4">
+              <span>Where can I follow updates and live coverage?</span>
+              <span class="faq-icon-arrow">+</span>
+            </button>
+            <div class="faq-answer-panel" id="faq-fest-4">
+              <p>Follow live announcements, behind-the-scenes reels, and speaker spotlights on the official Instagram account <a href="https://www.instagram.com/rallystartupfestival/?hl=en" target="_blank" rel="noopener noreferrer" style="color: var(--red); font-weight: 700;">@rallystartupfestival</a> and through Rally ACU social channels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CALL TO ACTION ═════════════════════════════════ -->
+    <section class="container reveal" style="margin-bottom: 5rem;">
+      <div class="coming-soon" style="margin-top: 2rem;">
+        <div class="coming-soon-badge">Limited Capacity</div>
+        <h3>Secure Your Free Festival Pass Today!</h3>
+        <p>
+          Join thousands of changemakers, founders, and students on September 30, 2026, at AlBurouj Cultural Hub.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://forms.gle/kqRmgGmAv3vtH2qd8" target="_blank" rel="noopener noreferrer" class="btn-primary" style="border-radius: 30px; padding: 14px 32px;">
+            Register via Official Form
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="https://www.instagram.com/rallystartupfestival/?hl=en" target="_blank" rel="noopener noreferrer" class="btn-outline">
+            Follow on Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo-container" style="margin-bottom: 14px; display: inline-flex;">
+            <img src="assets/img/logos/rally-main-logo.png" alt="Rally Logo">
+            <span class="brand-text">RALLY ACU</span>
+          </a>
+          <p class="footer-brand-tagline">"driven by speed, defined by impact"</p>
+          <p class="footer-brand-desc">
+            Building the next generation of entrepreneurial leaders at Ahram Canadian University.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="seasons.html">Seasons</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="final-festival.html">Final Festival</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="https://forms.gle/3cfzVsgtwSCeg1kd9" target="_blank">Join 26/27</a></li>
+          </ul>
+        </div>
+
+        <!-- Events -->
+        <div class="footer-col">
+          <h5>Events</h5>
+          <ul>
+            <li><a href="final-festival.html">Final Festival</a></li>
+            <li><a href="seasons.html">How to Start Your Startup</a></li>
+            <li><a href="seasons.html">Regional Competition</a></li>
+            <li><a href="seasons.html">Football League</a></li>
+            <li><a href="seasons.html">Ramadan Iftar</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-col">
+          <h5>Connect With Us</h5>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.6;">Follow Rally ACU &amp; Rally Startup Festival for real-time announcements.</p>
+          <div class="social-row" style="margin-bottom: 1.5rem;">
+            <a href="https://www.facebook.com/share/1CrQotw6cx/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/rallystartupfestival/?hl=en" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram Festival">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"></path><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/rally.acu?igsh=MWR3c214c2cwdGNkNA==" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram Rally ACU">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@rally.acu?_r=1&_t=ZS-97e6Ya2uEYp" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+            </a>
+          </div>
+          <div class="footer-logos">
+            <img src="assets/img/logos/acu-logo.png" alt="ACU">
+            <img src="assets/img/logos/rally-egypt-logo.png" alt="Rally Egypt">
+            <img src="assets/img/logos/aast-ec-logo.png" alt="AAST EC">
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Rally ACU &mdash; Ahram Canadian University. All rights reserved.</span>
+        <span>Driven by speed, defined by impact &#x26a1;</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button with circular progress -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg class="progress-circle" width="48" height="48" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" class="progress-circle-bg"></circle>
+      <circle cx="50" cy="50" r="40" class="progress-circle-fill" id="btt-progress-bar"></circle>
+    </svg>
+    <span class="arrow-up">&uarr;</span>
+  </button>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

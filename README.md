@@ -28,5 +28,7 @@ Welcome to the official website repository for **Rally ACU**, a premier student-
 │       └── events/            # Image galleries grouped by season events
 ├── index.html                 # Homepage containing About Us, stats, and FAQ
 ├── seasons.html               # Seasons overview, event highlights, and media
-└── team.html                  # Active executive board & committee listings
+├── team.html                  # Active executive board & committee listings
+├── final-festival.html        # Rally Egypt Final Festival showcase & agenda
+└── achievements.html          # Society achievements, honors & Rally Regional trophy
 ```

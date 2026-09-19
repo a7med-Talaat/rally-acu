@@ -394,4 +394,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ─── 14. FESTIVAL SPEAKERS STAGE FILTER ────────────
+  const speakerFilterBtns = document.querySelectorAll('.speaker-filter-btn');
+  const speakerCards = document.querySelectorAll('.speaker-card[data-stage]');
+
+  if (speakerFilterBtns.length > 0 && speakerCards.length > 0) {
+    speakerFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        speakerFilterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.stageFilter || 'all';
+
+        speakerCards.forEach(card => {
+          if (filter === 'all' || card.dataset.stage === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
 });
+
