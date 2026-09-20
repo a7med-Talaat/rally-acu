@@ -461,10 +461,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ══════════════════════════════════════════════════════
    AI EMAIL COMPOSER — Rally ACU Startup Pitch Tool
-   Pure JS, no external API. Generates a polished email
-   from the student's answers to 4 guided questions.
+   Uses EmailJS to send beautifully formatted HTML emails
+   directly from the browser. No backend required.
+   Setup: https://www.emailjs.com (free · 200/month)
 ══════════════════════════════════════════════════════ */
 (function () {
+
+  // ─── EmailJS Config ────────────────────────────────
+  // 1. Sign up free at https://emailjs.com
+  // 2. Add Email Service (connect your Gmail account)
+  // 3. Create an Email Template (see README for HTML)
+  // 4. Paste your keys below:
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account → API Keys
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+
   const RALLY_EMAIL = 'rallyahramcanadianuniversity@gmail.com';
   const TOTAL_STEPS = 4;
 
@@ -783,54 +794,66 @@ ${answers.name || '[Your Name]'}`;
         document.body.removeChild(anchor);
       });
 
-      // Send it Now handler — uses FormSubmit.co (no backend needed)
+      // Send it Now handler — EmailJS (beautifully formatted HTML email)
       sendNowBtn.addEventListener('click', () => {
         sendNowBtn.disabled = true;
         sendNowBtn.innerHTML = '⏳ Sending...';
 
         const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
-        const senderName = answers.name || 'A Student';
+        const supportList = Array.isArray(answers.support) ? answers.support.join(', ') : (answers.support || '—');
 
-        fetch('https://formsubmit.co/ajax/rallyahramcanadianuniversity@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: senderName,
-            _subject: subject,
-            message: emailBody,
-            _template: 'table',
-            _captcha: 'false'
-          })
-        })
-        .then(res => res.json())
-        .then(data => {
-          if (data.success === 'true' || data.success === true) {
+        // Initialise EmailJS with the public key (safe to call multiple times)
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+        }
+
+        const templateParams = {
+          to_email:          RALLY_EMAIL,
+          from_name:         answers.name        || 'A Student',
+          startup_name:      answers.ideaName    || '—',
+          problem_statement: answers.problem     || '—',
+          support_needed:    supportList,
+          full_message:      emailBody,
+          reply_to:          RALLY_EMAIL
+        };
+
+        // Guard: warn if keys are still placeholders
+        if (
+          EMAILJS_PUBLIC_KEY  === 'YOUR_PUBLIC_KEY'  ||
+          EMAILJS_SERVICE_ID  === 'YOUR_SERVICE_ID'  ||
+          EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID'
+        ) {
+          sendNowBtn.disabled = false;
+          sendNowBtn.innerHTML = '🚀 Send it Now';
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = 'rgba(245,158,11,0.1)';
+          statusMsg.style.border = '1px solid rgba(245,158,11,0.3)';
+          statusMsg.style.color = 'var(--gold)';
+          statusMsg.textContent = '⚙️ EmailJS is not configured yet. Please add your Public Key, Service ID, and Template ID in script.js.';
+          return;
+        }
+
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+          .then(() => {
             sendNowBtn.innerHTML = '✅ Sent!';
             statusMsg.style.display = 'block';
             statusMsg.style.background = 'rgba(34,197,94,0.12)';
             statusMsg.style.border = '1px solid rgba(34,197,94,0.3)';
             statusMsg.style.color = '#22c55e';
-            statusMsg.textContent = '🎉 Your pitch email was sent to Rally ACU! We\'ll get back to you soon.';
-            // Add success bubble in chat
+            statusMsg.textContent = "🎉 Your pitch email was delivered to Rally ACU! We'll get back to you soon.";
             const successBubble = makeBubble("Your email was sent successfully! 🎉 Our team at Rally ACU will review your idea and get back to you. Good luck! 🚀");
             chat.appendChild(successBubble);
             scrollChatToBottom(chat);
-          } else {
-            throw new Error('FormSubmit returned non-success');
-          }
-        })
-        .catch(() => {
-          sendNowBtn.disabled = false;
-          sendNowBtn.innerHTML = '🚀 Send it Now';
-          statusMsg.style.display = 'block';
-          statusMsg.style.background = 'rgba(239,68,68,0.1)';
-          statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
-          statusMsg.style.color = 'var(--red)';
-          statusMsg.textContent = '⚠️ Could not send automatically. Please use "Mail App" or copy the email and send it manually.';
-        });
+          })
+          .catch(() => {
+            sendNowBtn.disabled = false;
+            sendNowBtn.innerHTML = '🚀 Send it Now';
+            statusMsg.style.display = 'block';
+            statusMsg.style.background = 'rgba(239,68,68,0.1)';
+            statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
+            statusMsg.style.color = 'var(--red)';
+            statusMsg.textContent = '⚠️ Could not send automatically. Please use "Mail App" or copy and send manually.';
+          });
       });
 
       actionsWrap.appendChild(copyBtn);
