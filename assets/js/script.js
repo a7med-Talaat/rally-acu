@@ -461,48 +461,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ══════════════════════════════════════════════════════
    AI EMAIL COMPOSER — Rally ACU Startup Pitch Tool
-   Uses EmailJS to send beautifully formatted HTML emails
-   directly from the browser. No backend required.
-   Setup: https://www.emailjs.com (free · 200/month)
+   Uses Brevo (brevo.com) — FREE 300 emails/day, forever.
+   No monthly cap. No credit card required.
 ══════════════════════════════════════════════════════ */
 (function () {
 
-  // ─── EmailJS Config ────────────────────────────────
-  // 1. Sign up free at https://emailjs.com
-  // 2. Add Email Service (connect your Gmail account)
-  // 3. Create an Email Template (see README for HTML)
-  // 4. Paste your keys below:
-  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account → API Keys
-  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+  // ─── Brevo Config ──────────────────────────────────
+  // 1. Sign up FREE at https://brevo.com (no credit card)
+  // 2. Go to: Settings → SMTP & API → API Keys → Generate
+  // 3. Paste your API key below:
+  const BREVO_API_KEY = 'YOUR_BREVO_API_KEY';
 
-  const RALLY_EMAIL = 'rallyahramcanadianuniversity@gmail.com';
-  const TOTAL_STEPS = 4;
+  const RALLY_EMAIL   = 'rallyahramcanadianuniversity@gmail.com';
+  const SENDER_NAME   = 'Rally ACU · Startup Portal';
+  const TOTAL_STEPS   = 6;
 
   const STEPS = [
     {
-      question: "Hi there! 👋 I'm the Rally ACU Email Assistant. I'll help you write a professional pitch email to our team in just a minute.\n\nFirst — what's your name?",
+      question: "Hi there! 👋 I'm the Rally ACU Email Assistant. I'll help you write a professional pitch to our team in just a minute.\n\nFirst — what's your full name?",
       placeholder: 'e.g. Ahmed Talaat',
       type: 'text',
       key: 'name'
     },
     {
-      question: "Great to meet you, {name}! 🚀\n\nWhat's your startup or idea called? (Don't worry if it's still just a concept — a working title is fine!)",
-      placeholder: 'e.g. GreenBox, EduLink, unnamed idea...',
+      question: "Great to meet you, {name}! 🚀\n\nWhat's your startup or idea called? (A working title is totally fine!)",
+      placeholder: 'e.g. GreenBox, EduLink, my unnamed idea...',
       type: 'text',
       key: 'ideaName'
     },
     {
-      question: "Love it! ✨ Now tell me — in one sentence, what problem does \"{ideaName}\" solve?",
+      question: "Love it! ✨ In one sentence — what problem does \"{ideaName}\" solve?",
       placeholder: 'e.g. It helps students find affordable textbooks by connecting them with seniors who finished their courses.',
       type: 'textarea',
       key: 'problem'
     },
     {
-      question: "Almost done! 🎯 What kind of support are you looking for from Rally ACU? (Select all that apply)",
+      question: "Almost there! 🎯 What kind of support are you looking for from Rally ACU? (Select all that apply)",
       type: 'chips',
       key: 'support',
       options: ['Mentorship', 'Pitching Support', 'Network Access', 'Expert Feedback', 'Funding Guidance', 'Partnership Opportunities']
+    },
+    {
+      question: "📬 What's your email address so we can get back to you?",
+      placeholder: 'your.email@example.com',
+      type: 'email',
+      key: 'contactEmail'
+    },
+    {
+      question: "📱 Last one! What's your phone number? (So we can reach you quickly if needed — optional but helpful)",
+      placeholder: 'e.g. +20 1xx xxx xxxx',
+      type: 'text',
+      key: 'contactPhone',
+      optional: true
     }
   ];
 
@@ -519,6 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function generateEmailDraft() {
     const supportList = (answers.support || []).join(', ') || 'mentorship and guidance';
     const subject = `Startup Idea Submission — ${answers.ideaName || 'My Startup Idea'}`;
+    const contactLine = [
+      answers.contactEmail ? `Email: ${answers.contactEmail}` : '',
+      answers.contactPhone ? `Phone: ${answers.contactPhone}` : ''
+    ].filter(Boolean).join('  |  ') || 'Not provided';
+
     const body =
 `Subject: ${subject}
 
@@ -529,6 +544,10 @@ My name is ${answers.name || '[Your Name]'}, and I am a student at Ahram Canadia
 I have a startup idea called "${answers.ideaName || '[Idea Name]'}." ${answers.problem || '[Problem statement]'}
 
 I am reaching out because I would love to get ${supportList} from Rally ACU to help me develop this idea further. I believe Rally ACU's community, events, and expertise can make a real difference in turning this concept into something meaningful and impactful.
+
+── Contact Details ──────────────────────────
+${contactLine}
+─────────────────────────────────────────────
 
 I look forward to hearing from you and exploring how we can move forward together.
 
@@ -591,29 +610,48 @@ ${answers.name || '[Your Name]'}`;
 
     const step = STEPS[stepIndex];
 
-    if (step.type === 'text') {
+    if (step.type === 'text' || step.type === 'email') {
       const input = document.createElement('input');
-      input.type = 'text';
+      input.type = step.type === 'email' ? 'email' : 'text';
       input.className = 'ai-step-text-input';
       input.placeholder = step.placeholder;
-      input.setAttribute('autocomplete', 'off');
+      input.setAttribute('autocomplete', step.type === 'email' ? 'email' : 'off');
+
+      const isLast = stepIndex === TOTAL_STEPS - 1;
+      const btnRow = document.createElement('div');
+      btnRow.style.cssText = 'display:flex;gap:8px;';
 
       const btn = document.createElement('button');
       btn.className = 'ai-next-btn';
-      btn.textContent = stepIndex < TOTAL_STEPS - 1 ? 'Continue →' : 'Next →';
-      btn.disabled = true;
+      btn.textContent = isLast ? 'Generate My Email ✨' : 'Continue →';
+      btn.disabled = !step.optional;
+      btn.style.flex = '1';
 
-      input.addEventListener('input', () => { btn.disabled = input.value.trim().length === 0; });
+      if (step.optional) {
+        // Skip button for optional steps
+        const skipBtn = document.createElement('button');
+        skipBtn.className = 'ai-action-copy';
+        skipBtn.textContent = 'Skip →';
+        skipBtn.style.cssText = 'flex:0 0 auto;padding:11px 16px;border-radius:20px;font-size:0.9rem;font-weight:700;cursor:pointer;';
+        skipBtn.addEventListener('click', () => submitAnswer(stepIndex, ''));
+        btnRow.appendChild(skipBtn);
+        btn.disabled = false; // allow submitting empty for optional
+      }
+
+      input.addEventListener('input', () => {
+        if (!step.optional) btn.disabled = input.value.trim().length === 0;
+      });
       input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !btn.disabled) btn.click(); });
 
       btn.addEventListener('click', () => {
         const val = input.value.trim();
-        if (!val) return;
+        if (!step.optional && !val) return;
         submitAnswer(stepIndex, val);
       });
 
+      btnRow.appendChild(btn);
       container.appendChild(input);
-      container.appendChild(btn);
+      container.appendChild(btnRow);
       setTimeout(() => input.focus(), 100);
 
     } else if (step.type === 'textarea') {
@@ -794,66 +832,178 @@ ${answers.name || '[Your Name]'}`;
         document.body.removeChild(anchor);
       });
 
-      // Send it Now handler — EmailJS (beautifully formatted HTML email)
+      // Send it Now handler — Brevo (300 emails/day, free forever)
       sendNowBtn.addEventListener('click', () => {
         sendNowBtn.disabled = true;
         sendNowBtn.innerHTML = '⏳ Sending...';
 
         const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
-        const supportList = Array.isArray(answers.support) ? answers.support.join(', ') : (answers.support || '—');
+        const supportList  = Array.isArray(answers.support) ? answers.support.join(', ') : (answers.support || '—');
+        const contactEmail = answers.contactEmail || '—';
+        const contactPhone = answers.contactPhone || '—';
+        const studentName  = answers.name     || 'A Student';
+        const ideaName     = answers.ideaName || '—';
+        const problem      = answers.problem  || '—';
 
-        // Initialise EmailJS with the public key (safe to call multiple times)
-        if (typeof emailjs !== 'undefined') {
-          emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-        }
-
-        const templateParams = {
-          to_email:          RALLY_EMAIL,
-          from_name:         answers.name        || 'A Student',
-          startup_name:      answers.ideaName    || '—',
-          problem_statement: answers.problem     || '—',
-          support_needed:    supportList,
-          full_message:      emailBody,
-          reply_to:          RALLY_EMAIL
-        };
-
-        // Guard: warn if keys are still placeholders
-        if (
-          EMAILJS_PUBLIC_KEY  === 'YOUR_PUBLIC_KEY'  ||
-          EMAILJS_SERVICE_ID  === 'YOUR_SERVICE_ID'  ||
-          EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID'
-        ) {
+        // Guard: warn if API key is still a placeholder
+        if (BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
           sendNowBtn.disabled = false;
           sendNowBtn.innerHTML = '🚀 Send it Now';
           statusMsg.style.display = 'block';
           statusMsg.style.background = 'rgba(245,158,11,0.1)';
           statusMsg.style.border = '1px solid rgba(245,158,11,0.3)';
           statusMsg.style.color = 'var(--gold)';
-          statusMsg.textContent = '⚙️ EmailJS is not configured yet. Please add your Public Key, Service ID, and Template ID in script.js.';
+          statusMsg.textContent = '⚙️ Brevo API key is not set yet. Paste your key into script.js (takes 2 minutes at brevo.com — free!).';
           return;
         }
 
-        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-          .then(() => {
-            sendNowBtn.innerHTML = '✅ Sent!';
-            statusMsg.style.display = 'block';
-            statusMsg.style.background = 'rgba(34,197,94,0.12)';
-            statusMsg.style.border = '1px solid rgba(34,197,94,0.3)';
-            statusMsg.style.color = '#22c55e';
-            statusMsg.textContent = "🎉 Your pitch email was delivered to Rally ACU! We'll get back to you soon.";
-            const successBubble = makeBubble("Your email was sent successfully! 🎉 Our team at Rally ACU will review your idea and get back to you. Good luck! 🚀");
-            chat.appendChild(successBubble);
-            scrollChatToBottom(chat);
-          })
-          .catch(() => {
-            sendNowBtn.disabled = false;
-            sendNowBtn.innerHTML = '🚀 Send it Now';
-            statusMsg.style.display = 'block';
-            statusMsg.style.background = 'rgba(239,68,68,0.1)';
-            statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
-            statusMsg.style.color = 'var(--red)';
-            statusMsg.textContent = '⚠️ Could not send automatically. Please use "Mail App" or copy and send manually.';
-          });
+        // Branded HTML email template
+        const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f0f2f8;font-family:'Segoe UI',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f2f8;padding:32px 16px;">
+  <tr><td align="center">
+    <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.10);">
+
+      <!-- Header -->
+      <tr>
+        <td style="background:linear-gradient(135deg,#f43f5e 0%,#e11d48 50%,#f59e0b 100%);padding:36px 40px;text-align:center;">
+          <p style="margin:0 0 6px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.75);">Rally ACU · Startup Pitch Portal</p>
+          <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">🚀 New Startup Idea Submission</h1>
+          <p style="margin:10px 0 0;font-size:14px;color:rgba(255,255,255,0.85);">Someone has a great idea — let's take a look!</p>
+        </td>
+      </tr>
+
+      <!-- Idea Summary Cards -->
+      <tr>
+        <td style="padding:32px 40px 0;">
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="50%" style="padding-right:8px;vertical-align:top;">
+                <div style="background:#fef3c7;border-radius:12px;padding:18px;border-left:4px solid #f59e0b;">
+                  <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;">Student Name</p>
+                  <p style="margin:0;font-size:16px;font-weight:800;color:#1e293b;">${studentName}</p>
+                </div>
+              </td>
+              <td width="50%" style="padding-left:8px;vertical-align:top;">
+                <div style="background:#ffe4e6;border-radius:12px;padding:18px;border-left:4px solid #f43f5e;">
+                  <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9f1239;">Startup / Idea</p>
+                  <p style="margin:0;font-size:16px;font-weight:800;color:#1e293b;">${ideaName}</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!-- Contact Details -->
+      <tr>
+        <td style="padding:20px 40px 0;">
+          <div style="background:#f8fafc;border-radius:12px;padding:20px;border:1px solid #e2e8f0;">
+            <p style="margin:0 0 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;">📬 Contact Details</p>
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding:6px 0;font-size:13px;color:#64748b;font-weight:600;width:90px;">Email</td>
+                <td style="padding:6px 0;font-size:13px;color:#1e293b;font-weight:700;">
+                  ${contactEmail !== '—' ? `<a href="mailto:${contactEmail}" style="color:#f43f5e;text-decoration:none;">${contactEmail}</a>` : '—'}
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:6px 0;font-size:13px;color:#64748b;font-weight:600;">Phone</td>
+                <td style="padding:6px 0;font-size:13px;color:#1e293b;font-weight:700;">
+                  ${contactPhone !== '—' ? `<a href="tel:${contactPhone}" style="color:#f43f5e;text-decoration:none;">${contactPhone}</a>` : '—'}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Problem + Support -->
+      <tr>
+        <td style="padding:20px 40px 0;">
+          <div style="background:#f0fdf4;border-radius:12px;padding:20px;border-left:4px solid #22c55e;">
+            <p style="margin:0 0 6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#15803d;">🔍 Problem Being Solved</p>
+            <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.7;">${problem}</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 40px 0;">
+          <div style="background:#eff6ff;border-radius:12px;padding:20px;border-left:4px solid #3b82f6;">
+            <p style="margin:0 0 6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;">🤝 Support Requested</p>
+            <p style="margin:0;font-size:14px;color:#1e293b;font-weight:600;">${supportList}</p>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Full Pitch -->
+      <tr>
+        <td style="padding:20px 40px 0;">
+          <p style="margin:0 0 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">📄 Full Pitch Message</p>
+          <div style="background:#f8fafc;border-radius:12px;padding:20px;border:1px solid #e2e8f0;">
+            <p style="margin:0;font-size:14px;color:#334155;line-height:1.75;white-space:pre-line;">${emailBody}</p>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Footer -->
+      <tr>
+        <td style="padding:28px 40px 32px;text-align:center;">
+          <p style="margin:0;font-size:12px;color:#94a3b8;">Sent via <strong style="color:#f43f5e;">Rally ACU Startup Pitch Portal</strong> · <a href="https://rallyacu.qd.je" style="color:#f59e0b;text-decoration:none;">rallyacu.qd.je</a></p>
+          <p style="margin:6px 0 0;font-size:11px;color:#cbd5e1;">Driven by speed, defined by impact ⚡</p>
+        </td>
+      </tr>
+
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>`;
+
+        const payload = {
+          sender:  { name: SENDER_NAME, email: RALLY_EMAIL },
+          to:      [{ email: RALLY_EMAIL, name: 'Rally ACU Team' }],
+          replyTo: contactEmail !== '—' ? { email: contactEmail, name: studentName } : undefined,
+          subject: `🚀 Startup Idea: ${ideaName} — by ${studentName}`,
+          htmlContent
+        };
+
+        fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'api-key': BREVO_API_KEY
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(res => {
+          if (!res.ok) throw new Error('Brevo API error: ' + res.status);
+          return res.json();
+        })
+        .then(() => {
+          sendNowBtn.innerHTML = '✅ Sent!';
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = 'rgba(34,197,94,0.12)';
+          statusMsg.style.border = '1px solid rgba(34,197,94,0.3)';
+          statusMsg.style.color = '#22c55e';
+          statusMsg.textContent = "🎉 Your pitch was delivered to Rally ACU! We'll review it and get back to you soon.";
+          const successBubble = makeBubble("Your email was sent! 🎉 Rally ACU will review your startup idea and reach out to you. Good luck — we're rooting for you! 🚀");
+          chat.appendChild(successBubble);
+          scrollChatToBottom(chat);
+        })
+        .catch(() => {
+          sendNowBtn.disabled = false;
+          sendNowBtn.innerHTML = '🚀 Send it Now';
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = 'rgba(239,68,68,0.1)';
+          statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
+          statusMsg.style.color = 'var(--red)';
+          statusMsg.textContent = '⚠️ Could not send right now. Please use "📧 Mail App" or copy and send manually to rallyahramcanadianuniversity@gmail.com';
+        });
       });
 
       actionsWrap.appendChild(copyBtn);
