@@ -459,3 +459,387 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+/* ══════════════════════════════════════════════════════
+   AI EMAIL COMPOSER — Rally ACU Startup Pitch Tool
+   Pure JS, no external API. Generates a polished email
+   from the student's answers to 4 guided questions.
+══════════════════════════════════════════════════════ */
+(function () {
+  const RALLY_EMAIL = 'rallyahramcanadianuniversity@gmail.com';
+  const TOTAL_STEPS = 4;
+
+  const STEPS = [
+    {
+      question: "Hi there! 👋 I'm the Rally ACU Email Assistant. I'll help you write a professional pitch email to our team in just a minute.\n\nFirst — what's your name?",
+      placeholder: 'e.g. Ahmed Talaat',
+      type: 'text',
+      key: 'name'
+    },
+    {
+      question: "Great to meet you, {name}! 🚀\n\nWhat's your startup or idea called? (Don't worry if it's still just a concept — a working title is fine!)",
+      placeholder: 'e.g. GreenBox, EduLink, unnamed idea...',
+      type: 'text',
+      key: 'ideaName'
+    },
+    {
+      question: "Love it! ✨ Now tell me — in one sentence, what problem does \"{ideaName}\" solve?",
+      placeholder: 'e.g. It helps students find affordable textbooks by connecting them with seniors who finished their courses.',
+      type: 'textarea',
+      key: 'problem'
+    },
+    {
+      question: "Almost done! 🎯 What kind of support are you looking for from Rally ACU? (Select all that apply)",
+      type: 'chips',
+      key: 'support',
+      options: ['Mentorship', 'Pitching Support', 'Network Access', 'Expert Feedback', 'Funding Guidance', 'Partnership Opportunities']
+    }
+  ];
+
+  let answers = {};
+  let currentStep = 0;
+  let composerOpen = false;
+
+  function interpolate(text) {
+    return text
+      .replace('{name}', answers.name || 'there')
+      .replace('{ideaName}', answers.ideaName || 'my idea');
+  }
+
+  function generateEmailDraft() {
+    const supportList = (answers.support || []).join(', ') || 'mentorship and guidance';
+    const subject = `Startup Idea Submission — ${answers.ideaName || 'My Startup Idea'}`;
+    const body =
+`Subject: ${subject}
+
+Dear Rally ACU Team,
+
+My name is ${answers.name || '[Your Name]'}, and I am a student at Ahram Canadian University.
+
+I have a startup idea called "${answers.ideaName || '[Idea Name]'}." ${answers.problem || '[Problem statement]'}
+
+I am reaching out because I would love to get ${supportList} from Rally ACU to help me develop this idea further. I believe Rally ACU's community, events, and expertise can make a real difference in turning this concept into something meaningful and impactful.
+
+I look forward to hearing from you and exploring how we can move forward together.
+
+Best regards,
+${answers.name || '[Your Name]'}`;
+    return { subject, body };
+  }
+
+  // ─── DOM Helpers ──────────────────────────────────────
+  function makeBubble(text, isUser = false) {
+    const wrap = document.createElement('div');
+    wrap.className = 'ai-bubble' + (isUser ? ' user-bubble' : '');
+
+    const icon = document.createElement('div');
+    icon.className = 'ai-bubble-icon';
+    icon.textContent = isUser ? '👤' : '✨';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'ai-bubble-text';
+    bubble.style.whiteSpace = 'pre-line';
+    bubble.textContent = text;
+
+    if (isUser) {
+      wrap.appendChild(bubble);
+      wrap.appendChild(icon);
+    } else {
+      wrap.appendChild(icon);
+      wrap.appendChild(bubble);
+    }
+    return wrap;
+  }
+
+  function makeTypingIndicator() {
+    const wrap = document.createElement('div');
+    wrap.className = 'ai-typing-indicator';
+
+    const icon = document.createElement('div');
+    icon.className = 'ai-bubble-icon';
+    icon.textContent = '✨';
+
+    const dots = document.createElement('div');
+    dots.className = 'typing-dots';
+    dots.innerHTML = '<span></span><span></span><span></span>';
+
+    wrap.appendChild(icon);
+    wrap.appendChild(dots);
+    return wrap;
+  }
+
+  function scrollChatToBottom(chat) {
+    setTimeout(() => { chat.scrollTop = chat.scrollHeight; }, 50);
+  }
+
+  // ─── Input Area ──────────────────────────────────────
+  function renderInputArea(stepIndex) {
+    const container = document.getElementById('ai-input-area');
+    if (!container) return;
+    container.innerHTML = '';
+    container.className = 'ai-input-area';
+
+    const step = STEPS[stepIndex];
+
+    if (step.type === 'text') {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'ai-step-text-input';
+      input.placeholder = step.placeholder;
+      input.setAttribute('autocomplete', 'off');
+
+      const btn = document.createElement('button');
+      btn.className = 'ai-next-btn';
+      btn.textContent = stepIndex < TOTAL_STEPS - 1 ? 'Continue →' : 'Next →';
+      btn.disabled = true;
+
+      input.addEventListener('input', () => { btn.disabled = input.value.trim().length === 0; });
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !btn.disabled) btn.click(); });
+
+      btn.addEventListener('click', () => {
+        const val = input.value.trim();
+        if (!val) return;
+        submitAnswer(stepIndex, val);
+      });
+
+      container.appendChild(input);
+      container.appendChild(btn);
+      setTimeout(() => input.focus(), 100);
+
+    } else if (step.type === 'textarea') {
+      const ta = document.createElement('textarea');
+      ta.className = 'ai-step-text-input';
+      ta.placeholder = step.placeholder;
+      ta.rows = 3;
+
+      const btn = document.createElement('button');
+      btn.className = 'ai-next-btn';
+      btn.textContent = 'Continue →';
+      btn.disabled = true;
+
+      ta.addEventListener('input', () => { btn.disabled = ta.value.trim().length === 0; });
+
+      btn.addEventListener('click', () => {
+        const val = ta.value.trim();
+        if (!val) return;
+        submitAnswer(stepIndex, val);
+      });
+
+      container.appendChild(ta);
+      container.appendChild(btn);
+      setTimeout(() => ta.focus(), 100);
+
+    } else if (step.type === 'chips') {
+      const selectedItems = new Set();
+
+      const chipsWrap = document.createElement('div');
+      chipsWrap.className = 'ai-support-chips-wrap';
+
+      step.options.forEach(opt => {
+        const chip = document.createElement('button');
+        chip.className = 'ai-support-chip';
+        chip.textContent = opt;
+        chip.type = 'button';
+        chip.addEventListener('click', () => {
+          if (selectedItems.has(opt)) {
+            selectedItems.delete(opt);
+            chip.classList.remove('selected');
+          } else {
+            selectedItems.add(opt);
+            chip.classList.add('selected');
+          }
+          btn.disabled = selectedItems.size === 0;
+        });
+        chipsWrap.appendChild(chip);
+      });
+
+      const btn = document.createElement('button');
+      btn.className = 'ai-next-btn';
+      btn.textContent = 'Generate My Email ✨';
+      btn.disabled = true;
+
+      btn.addEventListener('click', () => {
+        if (selectedItems.size === 0) return;
+        submitAnswer(stepIndex, Array.from(selectedItems));
+      });
+
+      container.appendChild(chipsWrap);
+      container.appendChild(btn);
+    }
+  }
+
+  // ─── Submit + Advance ────────────────────────────────
+  function submitAnswer(stepIndex, value) {
+    const step = STEPS[stepIndex];
+    answers[step.key] = value;
+
+    const chat = document.getElementById('ai-chat');
+    const displayValue = Array.isArray(value) ? value.join(', ') : value;
+    chat.appendChild(makeBubble(displayValue, true));
+    scrollChatToBottom(chat);
+
+    // Clear input area
+    const inputArea = document.getElementById('ai-input-area');
+    if (inputArea) inputArea.innerHTML = '';
+
+    // Update progress
+    currentStep = stepIndex + 1;
+    updateProgress();
+
+    if (currentStep >= TOTAL_STEPS) {
+      // Final step → show preview
+      setTimeout(() => showPreview(chat), 700);
+    } else {
+      // Show typing then next question
+      const typing = makeTypingIndicator();
+      chat.appendChild(typing);
+      scrollChatToBottom(chat);
+
+      setTimeout(() => {
+        chat.removeChild(typing);
+        const nextStep = STEPS[currentStep];
+        chat.appendChild(makeBubble(interpolate(nextStep.question)));
+        scrollChatToBottom(chat);
+        renderInputArea(currentStep);
+      }, 900);
+    }
+  }
+
+  function showPreview(chat) {
+    const typing = makeTypingIndicator();
+    chat.appendChild(typing);
+    scrollChatToBottom(chat);
+
+    setTimeout(() => {
+      chat.removeChild(typing);
+      chat.appendChild(makeBubble("Perfect! 🎉 Here's your personalized pitch email. Feel free to edit it before sending!"));
+      scrollChatToBottom(chat);
+
+      const { subject, body } = generateEmailDraft();
+
+      const inputArea = document.getElementById('ai-input-area');
+      if (!inputArea) return;
+      inputArea.innerHTML = '';
+      inputArea.className = 'ai-input-area';
+
+      const ta = document.createElement('textarea');
+      ta.className = 'ai-preview-textarea';
+      ta.value = body;
+      ta.rows = 12;
+
+      const actionsWrap = document.createElement('div');
+      actionsWrap.className = 'ai-preview-actions';
+
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'ai-action-copy';
+      copyBtn.innerHTML = '📋 Copy Email';
+
+      const sendBtn = document.createElement('button');
+      sendBtn.className = 'ai-action-send';
+      sendBtn.innerHTML = '📧 Open in Mail App';
+
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(ta.value).then(() => {
+          copyBtn.innerHTML = '✅ Copied!';
+          setTimeout(() => { copyBtn.innerHTML = '📋 Copy Email'; }, 2500);
+        }).catch(() => {
+          ta.select();
+          document.execCommand('copy');
+          copyBtn.innerHTML = '✅ Copied!';
+          setTimeout(() => { copyBtn.innerHTML = '📋 Copy Email'; }, 2500);
+        });
+      });
+
+      sendBtn.addEventListener('click', () => {
+        const bodyEncoded = encodeURIComponent(ta.value.replace(/^Subject:.*\n\n/, ''));
+        const subjEncoded = encodeURIComponent(subject);
+        window.location.href = `mailto:${RALLY_EMAIL}?subject=${subjEncoded}&body=${bodyEncoded}`;
+      });
+
+      actionsWrap.appendChild(copyBtn);
+      actionsWrap.appendChild(sendBtn);
+      inputArea.appendChild(ta);
+      inputArea.appendChild(actionsWrap);
+
+      scrollChatToBottom(chat);
+    }, 1000);
+  }
+
+  function updateProgress() {
+    const fill = document.getElementById('ai-progress-fill');
+    const label = document.getElementById('ai-step-label');
+    if (fill) fill.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
+    if (label) {
+      label.textContent = currentStep >= TOTAL_STEPS
+        ? 'Email ready!'
+        : `Step ${currentStep + 1} of ${TOTAL_STEPS}`;
+    }
+  }
+
+  // ─── Open / Close Modal ──────────────────────────────
+  function openComposer() {
+    const overlay = document.getElementById('ai-composer-overlay');
+    if (!overlay) return;
+
+    // Reset state
+    answers = {};
+    currentStep = 0;
+
+    // Clear chat
+    const chat = document.getElementById('ai-chat');
+    if (chat) chat.innerHTML = '';
+
+    // Reset progress
+    updateProgress();
+
+    // Show first message
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    composerOpen = true;
+
+    setTimeout(() => {
+      const typing = makeTypingIndicator();
+      chat.appendChild(typing);
+      scrollChatToBottom(chat);
+
+      setTimeout(() => {
+        chat.removeChild(typing);
+        chat.appendChild(makeBubble(STEPS[0].question));
+        scrollChatToBottom(chat);
+        renderInputArea(0);
+        updateProgress();
+      }, 800);
+    }, 200);
+  }
+
+  function closeComposer() {
+    const overlay = document.getElementById('ai-composer-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    composerOpen = false;
+  }
+
+  // ─── Init ─────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('open-ai-composer');
+    const closeBtn = document.getElementById('ai-composer-close');
+    const overlay = document.getElementById('ai-composer-overlay');
+
+    if (openBtn) openBtn.addEventListener('click', openComposer);
+    if (closeBtn) closeBtn.addEventListener('click', closeComposer);
+
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeComposer();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && composerOpen) closeComposer();
+    });
+
+    // Init progress bar width at 0
+    const fill = document.getElementById('ai-progress-fill');
+    if (fill) fill.style.width = '0%';
+  });
+})();

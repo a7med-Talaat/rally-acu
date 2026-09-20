@@ -305,6 +305,44 @@
       </div>
     </section>
 
+    <!-- ═══ STARTUP PITCH CTA ════════════════════════ -->
+    <section class="section-padding startup-pitch-section" id="pitch-idea">
+      <div class="container">
+        <div class="pitch-card spotlight-card reveal">
+          <div class="pitch-card-glow" aria-hidden="true"></div>
+
+          <div class="pitch-card-icon" aria-hidden="true">💡</div>
+
+          <div class="pitch-card-body">
+            <span class="pitch-card-tag">Startup Submissions</span>
+            <h2 class="pitch-card-title">Got a Startup Idea?<br>Let's Hear It.</h2>
+            <p class="pitch-card-desc">
+              Whether it's a napkin sketch or a half-built prototype — Rally ACU wants to hear your idea.
+              Reach out to us directly and we'll help you shape, pitch, and grow it. Every big company started as a wild idea.
+            </p>
+            <div class="pitch-card-actions">
+              <a
+                href="mailto:rallyahramcanadianuniversity@gmail.com?subject=Startup%20Idea%20Submission"
+                class="btn-pitch-email"
+                aria-label="Email Rally ACU directly"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+                Email Us Directly
+              </a>
+              <button
+                class="btn-pitch-ai"
+                id="open-ai-composer"
+                aria-label="Open AI Email Composer"
+              >
+                <span class="ai-sparkle">✨</span>
+                Compose with AI Assistant
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ REGISTRATION CTA ═════════════════════════ -->
     <section class="section-padding" id="register">
       <div class="container">
@@ -424,5 +462,37 @@
   </button>
 
   <script src="assets/js/script.js"></script>
+
+  <!-- ═══ AI EMAIL COMPOSER MODAL ════════════════════ -->
+  <div class="ai-composer-overlay" id="ai-composer-overlay" role="dialog" aria-modal="true" aria-label="AI Email Composer">
+    <div class="ai-composer-panel">
+
+      <!-- Header -->
+      <div class="ai-composer-header">
+        <div class="ai-composer-title-wrap">
+          <div class="ai-composer-avatar" aria-hidden="true">✨</div>
+          <div>
+            <div class="ai-composer-title">Rally ACU · Email Assistant</div>
+            <div class="ai-composer-subtitle">I'll help you write your startup pitch email</div>
+          </div>
+        </div>
+        <button class="ai-composer-close" id="ai-composer-close" aria-label="Close composer">✕</button>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="ai-progress-bar" aria-hidden="true">
+        <div class="ai-progress-fill" id="ai-progress-fill"></div>
+      </div>
+      <div class="ai-step-label" id="ai-step-label">Step 1 of 4</div>
+
+      <!-- Chat area -->
+      <div class="ai-composer-chat" id="ai-chat" aria-live="polite" aria-label="Conversation"></div>
+
+      <!-- Dynamic input area (filled by JS) -->
+      <div id="ai-input-area" class="ai-input-area"></div>
+
+    </div>
+  </div>
+
 </body>
 </html>
