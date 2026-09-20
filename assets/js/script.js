@@ -726,38 +726,119 @@ ${answers.name || '[Your Name]'}`;
       ta.value = body;
       ta.rows = 12;
 
+      // ── Status message (hidden by default) ──────────
+      const statusMsg = document.createElement('div');
+      statusMsg.style.cssText = `
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        padding: 8px 12px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        display: none;
+      `;
+
       const actionsWrap = document.createElement('div');
       actionsWrap.className = 'ai-preview-actions';
 
+      // ── Copy button ──────────────────────────────────
       const copyBtn = document.createElement('button');
       copyBtn.className = 'ai-action-copy';
-      copyBtn.innerHTML = '📋 Copy Email';
+      copyBtn.innerHTML = '📋 Copy';
 
-      const sendBtn = document.createElement('button');
-      sendBtn.className = 'ai-action-send';
-      sendBtn.innerHTML = '📧 Open in Mail App';
+      // ── Open in Mail App button (fixed) ─────────────
+      const mailBtn = document.createElement('button');
+      mailBtn.className = 'ai-action-copy';
+      mailBtn.style.flex = '1';
+      mailBtn.innerHTML = '📧 Mail App';
 
+      // ── Send it Now button ───────────────────────────
+      const sendNowBtn = document.createElement('button');
+      sendNowBtn.className = 'ai-action-send';
+      sendNowBtn.innerHTML = '🚀 Send it Now';
+
+      // Copy handler
       copyBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(ta.value).then(() => {
           copyBtn.innerHTML = '✅ Copied!';
-          setTimeout(() => { copyBtn.innerHTML = '📋 Copy Email'; }, 2500);
+          setTimeout(() => { copyBtn.innerHTML = '📋 Copy'; }, 2500);
         }).catch(() => {
           ta.select();
           document.execCommand('copy');
           copyBtn.innerHTML = '✅ Copied!';
-          setTimeout(() => { copyBtn.innerHTML = '📋 Copy Email'; }, 2500);
+          setTimeout(() => { copyBtn.innerHTML = '📋 Copy'; }, 2500);
         });
       });
 
-      sendBtn.addEventListener('click', () => {
-        const bodyEncoded = encodeURIComponent(ta.value.replace(/^Subject:.*\n\n/, ''));
-        const subjEncoded = encodeURIComponent(subject);
-        window.location.href = `mailto:${RALLY_EMAIL}?subject=${subjEncoded}&body=${bodyEncoded}`;
+      // Open in Mail App handler (uses temp anchor to avoid page navigation)
+      mailBtn.addEventListener('click', () => {
+        const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
+        const mailtoLink = `mailto:${RALLY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        const anchor = document.createElement('a');
+        anchor.href = mailtoLink;
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+      });
+
+      // Send it Now handler — uses FormSubmit.co (no backend needed)
+      sendNowBtn.addEventListener('click', () => {
+        sendNowBtn.disabled = true;
+        sendNowBtn.innerHTML = '⏳ Sending...';
+
+        const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
+        const senderName = answers.name || 'A Student';
+
+        fetch('https://formsubmit.co/ajax/rallyahramcanadianuniversity@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: senderName,
+            _subject: subject,
+            message: emailBody,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success === 'true' || data.success === true) {
+            sendNowBtn.innerHTML = '✅ Sent!';
+            statusMsg.style.display = 'block';
+            statusMsg.style.background = 'rgba(34,197,94,0.12)';
+            statusMsg.style.border = '1px solid rgba(34,197,94,0.3)';
+            statusMsg.style.color = '#22c55e';
+            statusMsg.textContent = '🎉 Your pitch email was sent to Rally ACU! We\'ll get back to you soon.';
+            // Add success bubble in chat
+            const successBubble = makeBubble("Your email was sent successfully! 🎉 Our team at Rally ACU will review your idea and get back to you. Good luck! 🚀");
+            chat.appendChild(successBubble);
+            scrollChatToBottom(chat);
+          } else {
+            throw new Error('FormSubmit returned non-success');
+          }
+        })
+        .catch(() => {
+          sendNowBtn.disabled = false;
+          sendNowBtn.innerHTML = '🚀 Send it Now';
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = 'rgba(239,68,68,0.1)';
+          statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
+          statusMsg.style.color = 'var(--red)';
+          statusMsg.textContent = '⚠️ Could not send automatically. Please use "Mail App" or copy the email and send it manually.';
+        });
       });
 
       actionsWrap.appendChild(copyBtn);
-      actionsWrap.appendChild(sendBtn);
+      actionsWrap.appendChild(mailBtn);
+      actionsWrap.appendChild(sendNowBtn);
+
       inputArea.appendChild(ta);
+      inputArea.appendChild(statusMsg);
       inputArea.appendChild(actionsWrap);
 
       scrollChatToBottom(chat);

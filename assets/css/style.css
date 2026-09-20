@@ -3091,7 +3091,8 @@ main { padding-top: var(--nav-height); position: relative; z-index: 1; }
 
 .ai-preview-actions {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .ai-action-copy, .ai-action-send {
