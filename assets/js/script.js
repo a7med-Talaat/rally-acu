@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Sign up FREE at https://brevo.com (no credit card)
   // 2. Go to: Settings → SMTP & API → API Keys → Generate
   // 3. Paste your API key below:
-  const BREVO_API_KEY = 'YOUR_BREVO_API_KEY';
+  const BREVO_API_KEY = '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';
 
   const RALLY_EMAIL   = 'rallyahramcanadianuniversity@gmail.com';
   const SENDER_NAME   = 'Rally ACU · Startup Portal';
