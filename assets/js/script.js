@@ -1081,11 +1081,16 @@ ${answers.name || '[Your Name]'}`;
 
   // ─── Init ─────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
-    const openBtn = document.getElementById('open-ai-composer');
+    const triggerBtns = document.querySelectorAll('.trigger-ai-composer, #open-ai-composer');
     const closeBtn = document.getElementById('ai-composer-close');
     const overlay = document.getElementById('ai-composer-overlay');
 
-    if (openBtn) openBtn.addEventListener('click', openComposer);
+    triggerBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openComposer();
+      });
+    });
     if (closeBtn) closeBtn.addEventListener('click', closeComposer);
 
     if (overlay) {
