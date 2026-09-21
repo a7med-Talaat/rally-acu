@@ -806,16 +806,16 @@ ${answers.name || '[Your Name]'}`;
         });
       });
 
-      // Mail App handler — opens user's own email client pre-filled
+      // Mail handler — opens Gmail compose in new tab, pre-filled and ready to Send
       mailBtn.addEventListener('click', () => {
         const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
-        const mailtoLink = `mailto:${RALLY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoLink;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(RALLY_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        window.open(gmailUrl, '_blank');
 
-        mailBtn.innerHTML = '✅ Opening Mail App...';
+        mailBtn.innerHTML = '✅ Opened!';
         setTimeout(() => { mailBtn.innerHTML = '📧 Send Email'; }, 3000);
 
-        const successBubble = makeBubble("Your mail app should open now! 📬 Just hit Send and your pitch will be on its way to Rally ACU. Good luck — we're rooting for you! 🚀");
+        const successBubble = makeBubble("Gmail just opened in a new tab! 📬 Your pitch is ready — just hit Send. Good luck — we're rooting for you! 🚀");
         chat.appendChild(successBubble);
         scrollChatToBottom(chat);
       });
