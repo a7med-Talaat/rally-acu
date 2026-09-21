@@ -810,13 +810,7 @@ ${answers.name || '[Your Name]'}`;
       mailBtn.addEventListener('click', () => {
         const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
         const mailtoLink = `mailto:${RALLY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-        const anchor = document.createElement('a');
-        anchor.href = mailtoLink;
-        anchor.target = '_blank';
-        anchor.rel = 'noopener';
-        document.body.appendChild(anchor);
-        anchor.click();
-        document.body.removeChild(anchor);
+        window.location.href = mailtoLink;
 
         mailBtn.innerHTML = '✅ Opening Mail App...';
         setTimeout(() => { mailBtn.innerHTML = '📧 Send Email'; }, 3000);
