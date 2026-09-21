@@ -461,19 +461,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ══════════════════════════════════════════════════════
    AI EMAIL COMPOSER — Rally ACU Startup Pitch Tool
-   Uses Brevo (brevo.com) — FREE 300 emails/day, forever.
-   No monthly cap. No credit card required.
+   Opens the user's own mail app pre-filled and ready.
+   No external service. No API key. No backend.
 ══════════════════════════════════════════════════════ */
 (function () {
 
-  // ─── Brevo config (obfuscated — key split so it's not a plain searchable string) ──
-  const _k = ['xkeysib-f969e18b', '445543d5999d24b2', '700fd7655a729366',
-               'cf2b3fa31028e064', '0b94b754-ixQs9FQ', 'UH0xvhz6f'].join('');
-  const BREVO_API_KEY = _k;
-
-  const RALLY_EMAIL   = 'rallyahramcanadianuniversity@gmail.com';
-  const SENDER_NAME   = 'Rally ACU · Startup Portal';
-  const TOTAL_STEPS   = 6;
+  const RALLY_EMAIL = 'rallyahramcanadianuniversity@gmail.com';
+  const TOTAL_STEPS = 6;
 
   const STEPS = [
     {
@@ -794,16 +788,10 @@ ${answers.name || '[Your Name]'}`;
       copyBtn.className = 'ai-action-copy';
       copyBtn.innerHTML = '📋 Copy';
 
-      // ── Open in Mail App button (fixed) ─────────────
+      // ── Send via Mail App (primary action) ───────────
       const mailBtn = document.createElement('button');
-      mailBtn.className = 'ai-action-copy';
-      mailBtn.style.flex = '1';
-      mailBtn.innerHTML = '📧 Mail App';
-
-      // ── Send it Now button ───────────────────────────
-      const sendNowBtn = document.createElement('button');
-      sendNowBtn.className = 'ai-action-send';
-      sendNowBtn.innerHTML = '🚀 Send it Now';
+      mailBtn.className = 'ai-action-send';
+      mailBtn.innerHTML = '📧 Send Email';
 
       // Copy handler
       copyBtn.addEventListener('click', () => {
@@ -818,7 +806,7 @@ ${answers.name || '[Your Name]'}`;
         });
       });
 
-      // Open in Mail App handler (uses temp anchor to avoid page navigation)
+      // Mail App handler — opens user's own email client pre-filled
       mailBtn.addEventListener('click', () => {
         const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
         const mailtoLink = `mailto:${RALLY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
@@ -829,200 +817,25 @@ ${answers.name || '[Your Name]'}`;
         document.body.appendChild(anchor);
         anchor.click();
         document.body.removeChild(anchor);
-      });
 
-      // Send it Now handler — Brevo (300 emails/day, free forever)
-      sendNowBtn.addEventListener('click', () => {
-        sendNowBtn.disabled = true;
-        sendNowBtn.innerHTML = '⏳ Sending...';
+        mailBtn.innerHTML = '✅ Opening Mail App...';
+        setTimeout(() => { mailBtn.innerHTML = '📧 Send Email'; }, 3000);
 
-        const emailBody = ta.value.replace(/^Subject:[^\n]*\n\n/, '');
-        const supportList  = Array.isArray(answers.support) ? answers.support.join(', ') : (answers.support || '—');
-        const contactEmail = answers.contactEmail || '—';
-        const contactPhone = answers.contactPhone || '—';
-        const studentName  = answers.name     || 'A Student';
-        const ideaName     = answers.ideaName || '—';
-        const problem      = answers.problem  || '—';
-
-        // Guard: warn if API key is still a placeholder
-        if (BREVO_API_KEY === 'YOUR_BREVO_API_KEY') {
-          sendNowBtn.disabled = false;
-          sendNowBtn.innerHTML = '🚀 Send it Now';
-          statusMsg.style.display = 'block';
-          statusMsg.style.background = 'rgba(245,158,11,0.1)';
-          statusMsg.style.border = '1px solid rgba(245,158,11,0.3)';
-          statusMsg.style.color = 'var(--gold)';
-          statusMsg.textContent = '⚙️ Brevo API key is not set yet. Paste your key into script.js (takes 2 minutes at brevo.com — free!).';
-          return;
-        }
-
-        // Branded HTML email template
-        const htmlContent = `
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f0f2f8;font-family:'Segoe UI',Arial,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f2f8;padding:32px 16px;">
-  <tr><td align="center">
-    <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.10);">
-
-      <!-- Header -->
-      <tr>
-        <td style="background:linear-gradient(135deg,#f43f5e 0%,#e11d48 50%,#f59e0b 100%);padding:36px 40px;text-align:center;">
-          <p style="margin:0 0 6px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.75);">Rally ACU · Startup Pitch Portal</p>
-          <h1 style="margin:0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">🚀 New Startup Idea Submission</h1>
-          <p style="margin:10px 0 0;font-size:14px;color:rgba(255,255,255,0.85);">Someone has a great idea — let's take a look!</p>
-        </td>
-      </tr>
-
-      <!-- Idea Summary Cards -->
-      <tr>
-        <td style="padding:32px 40px 0;">
-          <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="50%" style="padding-right:8px;vertical-align:top;">
-                <div style="background:#fef3c7;border-radius:12px;padding:18px;border-left:4px solid #f59e0b;">
-                  <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#92400e;">Student Name</p>
-                  <p style="margin:0;font-size:16px;font-weight:800;color:#1e293b;">${studentName}</p>
-                </div>
-              </td>
-              <td width="50%" style="padding-left:8px;vertical-align:top;">
-                <div style="background:#ffe4e6;border-radius:12px;padding:18px;border-left:4px solid #f43f5e;">
-                  <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9f1239;">Startup / Idea</p>
-                  <p style="margin:0;font-size:16px;font-weight:800;color:#1e293b;">${ideaName}</p>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-
-      <!-- Contact Details -->
-      <tr>
-        <td style="padding:20px 40px 0;">
-          <div style="background:#f8fafc;border-radius:12px;padding:20px;border:1px solid #e2e8f0;">
-            <p style="margin:0 0 14px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;">📬 Contact Details</p>
-            <table width="100%" cellpadding="0" cellspacing="0">
-              <tr>
-                <td style="padding:6px 0;font-size:13px;color:#64748b;font-weight:600;width:90px;">Email</td>
-                <td style="padding:6px 0;font-size:13px;color:#1e293b;font-weight:700;">
-                  ${contactEmail !== '—' ? `<a href="mailto:${contactEmail}" style="color:#f43f5e;text-decoration:none;">${contactEmail}</a>` : '—'}
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:6px 0;font-size:13px;color:#64748b;font-weight:600;">Phone</td>
-                <td style="padding:6px 0;font-size:13px;color:#1e293b;font-weight:700;">
-                  ${contactPhone !== '—' ? `<a href="tel:${contactPhone}" style="color:#f43f5e;text-decoration:none;">${contactPhone}</a>` : '—'}
-                </td>
-              </tr>
-            </table>
-          </div>
-        </td>
-      </tr>
-
-      <!-- Problem + Support -->
-      <tr>
-        <td style="padding:20px 40px 0;">
-          <div style="background:#f0fdf4;border-radius:12px;padding:20px;border-left:4px solid #22c55e;">
-            <p style="margin:0 0 6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#15803d;">🔍 Problem Being Solved</p>
-            <p style="margin:0;font-size:14px;color:#1e293b;line-height:1.7;">${problem}</p>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:16px 40px 0;">
-          <div style="background:#eff6ff;border-radius:12px;padding:20px;border-left:4px solid #3b82f6;">
-            <p style="margin:0 0 6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#1d4ed8;">🤝 Support Requested</p>
-            <p style="margin:0;font-size:14px;color:#1e293b;font-weight:600;">${supportList}</p>
-          </div>
-        </td>
-      </tr>
-
-      <!-- Full Pitch -->
-      <tr>
-        <td style="padding:20px 40px 0;">
-          <p style="margin:0 0 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#94a3b8;">📄 Full Pitch Message</p>
-          <div style="background:#f8fafc;border-radius:12px;padding:20px;border:1px solid #e2e8f0;">
-            <p style="margin:0;font-size:14px;color:#334155;line-height:1.75;white-space:pre-line;">${emailBody}</p>
-          </div>
-        </td>
-      </tr>
-
-      <!-- Footer -->
-      <tr>
-        <td style="padding:28px 40px 32px;text-align:center;">
-          <p style="margin:0;font-size:12px;color:#94a3b8;">Sent via <strong style="color:#f43f5e;">Rally ACU Startup Pitch Portal</strong> · <a href="https://rallyacu.qd.je" style="color:#f59e0b;text-decoration:none;">rallyacu.qd.je</a></p>
-          <p style="margin:6px 0 0;font-size:11px;color:#cbd5e1;">Driven by speed, defined by impact ⚡</p>
-        </td>
-      </tr>
-
-    </table>
-  </td></tr>
-</table>
-</body>
-</html>`;
-
-        const payload = {
-          sender:  { name: SENDER_NAME, email: RALLY_EMAIL },
-          to:      [{ email: RALLY_EMAIL, name: 'Rally ACU Team' }],
-          replyTo: contactEmail !== '—' ? { email: contactEmail, name: studentName } : undefined,
-          subject: `🚀 Startup Idea: ${ideaName} — by ${studentName}`,
-          htmlContent
-        };
-
-        fetch('https://api.brevo.com/v3/smtp/email', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'api-key': BREVO_API_KEY
-          },
-          body: JSON.stringify(payload)
-        })
-        .then(res => {
-          if (!res.ok) {
-            return res.json().then(err => {
-              throw new Error(err.message || `Brevo error ${res.status}`);
-            }).catch(e => { if (e.message) throw e; throw new Error(`Brevo error ${res.status}`); });
-          }
-          return res.json();
-        })
-        .then(() => {
-          sendNowBtn.innerHTML = '✅ Sent!';
-          statusMsg.style.display = 'block';
-          statusMsg.style.background = 'rgba(34,197,94,0.12)';
-          statusMsg.style.border = '1px solid rgba(34,197,94,0.3)';
-          statusMsg.style.color = '#22c55e';
-          statusMsg.textContent = "🎉 Your pitch was delivered to Rally ACU! We'll review it and get back to you soon.";
-          const successBubble = makeBubble("Your email was sent! 🎉 Rally ACU will review your startup idea and reach out to you. Good luck — we're rooting for you! 🚀");
-          chat.appendChild(successBubble);
-          scrollChatToBottom(chat);
-        })
-        .catch((err) => {
-          sendNowBtn.disabled = false;
-          sendNowBtn.innerHTML = '🚀 Send it Now';
-          statusMsg.style.display = 'block';
-          statusMsg.style.background = 'rgba(239,68,68,0.1)';
-          statusMsg.style.border = '1px solid rgba(239,68,68,0.25)';
-          statusMsg.style.color = 'var(--red)';
-          const msg = err && err.message ? err.message : '';
-          statusMsg.textContent = msg
-            ? `⚠️ ${msg}`
-            : '⚠️ Could not send right now. Please use "📧 Mail App" or copy and send manually.';
-        });
+        const successBubble = makeBubble("Your mail app should open now! 📬 Just hit Send and your pitch will be on its way to Rally ACU. Good luck — we're rooting for you! 🚀");
+        chat.appendChild(successBubble);
+        scrollChatToBottom(chat);
       });
 
       actionsWrap.appendChild(copyBtn);
       actionsWrap.appendChild(mailBtn);
-      actionsWrap.appendChild(sendNowBtn);
 
       inputArea.appendChild(ta);
-      inputArea.appendChild(statusMsg);
       inputArea.appendChild(actionsWrap);
 
       scrollChatToBottom(chat);
     }, 1000);
   }
+
 
   function updateProgress() {
     const fill = document.getElementById('ai-progress-fill');
