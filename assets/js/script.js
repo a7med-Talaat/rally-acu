@@ -915,3 +915,24 @@ ${answers.name || '[Your Name]'}`;
     if (fill) fill.style.width = '0%';
   });
 })();
+
+/* ─── Techne Summit — Persona Filter ─────────────────────────── */
+function rallySetPersona(btn, persona) {
+  // Update button states
+  document.querySelectorAll('.ts-persona-btn').forEach(b => {
+    b.classList.remove('ts-active');
+    b.setAttribute('aria-pressed', 'false');
+  });
+  btn.classList.add('ts-active');
+  btn.setAttribute('aria-pressed', 'true');
+
+  // Show / hide ticket cards
+  document.querySelectorAll('.ts-ticket-card').forEach(card => {
+    const cardPersona = card.getAttribute('data-persona');
+    if (persona === 'all' || cardPersona === persona || cardPersona === 'all') {
+      card.classList.remove('ts-hidden');
+    } else {
+      card.classList.add('ts-hidden');
+    }
+  });
+}

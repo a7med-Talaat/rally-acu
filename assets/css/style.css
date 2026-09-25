@@ -3536,3 +3536,193 @@ main { padding-top: var(--nav-height); position: relative; z-index: 1; }
   gap: 10px;
   margin-top: auto;
 }
+
+/* ════════════════════════════════════════════════════
+   TECHNE SUMMIT TICKETS SECTION
+   Rally ACU × Techne Summit 2026 Partnership
+   ════════════════════════════════════════════════════ */
+
+.rally-tickets-section {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Techne Branding Row ─── */
+.techne-branding-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.techne-summit-logo {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  padding: 6px 14px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+.techne-summit-logo:hover { transform: scale(1.04); }
+.techne-branding-info { display: flex; flex-direction: column; gap: 4px; }
+.techne-dates { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+
+/* ─── Persona Bar ─── */
+.ts-persona-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 22px 26px;
+  margin-bottom: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+.ts-persona-copy { flex: 1 1 180px; }
+.ts-persona-copy h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+.ts-persona-copy p  { font-size: 0.82rem; color: var(--text-muted); }
+.ts-persona-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.ts-persona-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  transition: var(--transition-fast);
+}
+.ts-persona-btn strong { display: block; color: var(--text-primary); font-size: 0.85rem; }
+.ts-persona-btn small  { display: block; color: var(--text-muted); font-size: 0.75rem; }
+.ts-picon { font-size: 1.2rem; }
+.ts-persona-btn:hover { border-color: var(--red); color: var(--red); }
+.ts-persona-btn.ts-active { border-color: var(--red); background: var(--red-glow); color: var(--red); }
+.ts-persona-btn.ts-active strong { color: var(--red); }
+
+/* ─── Ticket Grid ─── */
+.ts-tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+/* ─── Ticket Card Base ─── */
+.ts-ticket-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 24px;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+.ts-ticket-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ts-ticket-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(255,255,255,0.15); }
+.ts-ticket-card.ts-hidden { display: none !important; }
+
+/* Color Variants */
+.ts-card--purple { border-top: 3px solid #8b5cf6; }
+.ts-card--purple .ts-chk { color: #8b5cf6; }
+.ts-card--green  { border-top: 3px solid #10b981; }
+.ts-card--green  .ts-chk { color: #10b981; }
+.ts-card--gold   { border-top: 3px solid var(--gold); }
+.ts-card--gold   .ts-chk { color: var(--gold); }
+.ts-card--highlighted { border: 2px solid var(--red); box-shadow: 0 0 0 1px var(--red-glow), var(--shadow-md); }
+.ts-card--highlighted .ts-chk { color: var(--red); }
+
+/* Badge */
+.ts-badge {
+  display: inline-flex; align-items: center;
+  padding: 3px 10px; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em;
+  margin-bottom: 12px; width: fit-content;
+}
+.ts-badge--free    { background: rgba(16,185,129,0.15); color: #10b981; }
+.ts-badge--popular { background: var(--red-glow); color: var(--red); }
+
+/* Icon, Name, Tag */
+.ts-ticket-icon { font-size: 2rem; margin-bottom: 8px; line-height: 1; }
+.ts-ticket-name { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; line-height: 1.3; }
+.ts-ticket-tag  { display: inline-block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 16px; }
+
+/* Features */
+.ts-ticket-features {
+  list-style: none; flex: 1; margin-bottom: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ts-ticket-features li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.83rem; color: var(--text-secondary); line-height: 1.45;
+}
+.ts-chk { color: var(--red); font-weight: 700; font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+
+/* Price */
+.ts-price-wrap { margin-bottom: 18px; }
+.ts-price-main { font-size: 1.6rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; line-height: 1.1; }
+.ts-price-usd  { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+/* CTA */
+.ts-cta {
+  display: block; text-align: center;
+  padding: 12px 20px; border-radius: var(--radius-md);
+  background: var(--red-gradient); color: #fff;
+  font-weight: 700; font-size: 0.88rem; text-decoration: none;
+  letter-spacing: 0.02em; transition: var(--transition-fast);
+  border: none; cursor: pointer; margin-top: auto;
+}
+.ts-cta:hover { opacity: 0.88; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.ts-cta--outline { background: transparent; border: 1.5px solid var(--red); color: var(--red); }
+.ts-cta--outline:hover { background: var(--red-glow); }
+
+/* Support Row */
+.ts-support-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px; margin-top: 6px;
+}
+.ts-support-card {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 20px 24px;
+  border-radius: var(--radius-lg); border: 1.5px solid var(--border-strong);
+  background: var(--bg-card); backdrop-filter: blur(10px); flex-wrap: wrap;
+}
+.ts-support-left { display: flex; align-items: flex-start; gap: 14px; flex: 1; }
+.ts-support-icon { font-size: 1.5rem; flex-shrink: 0; padding: 8px; border-radius: 10px; background: rgba(16,185,129,0.1); }
+.ts-support-icon--blue { background: rgba(56,189,248,0.1); }
+.ts-support-card h3 { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+.ts-support-card p  { font-size: 0.82rem; color: var(--text-muted); margin: 0 0 8px; }
+.ts-support-btn {
+  display: inline-flex; align-items: center; padding: 9px 18px;
+  border-radius: var(--radius-md); background: var(--red-gradient);
+  color: #fff; font-weight: 700; font-size: 0.82rem; text-decoration: none;
+  white-space: nowrap; transition: var(--transition-fast); flex-shrink: 0;
+}
+.ts-support-btn:hover { opacity: 0.88; }
+.ts-support-btn--green { background: linear-gradient(135deg, #10b981, #059669); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .ts-persona-bar { flex-direction: column; align-items: flex-start; }
+  .ts-persona-btns { width: 100%; }
+  .ts-persona-btn { flex: 1 1 calc(50% - 5px); justify-content: center; }
+  .ts-tickets-grid { grid-template-columns: 1fr; }
+  .ts-support-card { flex-direction: column; }
+}
